@@ -1,0 +1,128 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="style">
+		<style>
+small {
+	color: red;
+}
+
+.carrinho {
+	height: 420px;
+	width: 1000px;
+	margin-top: 1%;
+	margin-left: 20%;
+	position: absolute;
+}
+
+.produto-left {
+	/*margin: 3px;*/
+	position: absolute;
+	top: 5%;
+	left: 10%;
+	border: 1px solid black;
+	width: 45%;
+	/*float: left; */
+	height: 350px;
+	text-align: center;
+	background-color: white;
+}
+
+.produto-right {
+	/*margin: 3px; */
+	position: absolute;
+	top: 5%;
+	left: 56%;
+	width: 30%;
+	/* float: left;  */
+	height: 350px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	background-color: #2d839e;
+	border-style: dotted;
+}
+
+.produto-descricao {
+	/*margin: 3px;*/
+	position: absolute;
+	top: 90%;
+	left: 10%;
+	border: 1px solid black;
+	width: 76%;
+	/*float: left; */
+	height: 150px;
+	text-align: justify;
+	background-color: white;
+}
+
+.imagem {
+	height: 250px;
+	width: 417px;
+	margin-top: 50px;
+}
+
+.texto-produto {
+	width: 85%;
+	height: 85%;
+	margin-left: 7.5%;
+	background-color: white;
+	font-size: 26px;
+}
+</style>
+	</ui:define>
+
+
+	<ui:define name="conteudo">
+
+		<h2 align="center" style="margin-top: 1%;">Informações do Produto</h2>
+
+		<div class="carrinho">
+			<div class="produto-left">
+				<img src="img/ps4.png" class="imagem" />
+			</div>
+
+			<div class="produto-right">
+				<div class="texto-produto">
+					<p>Playstation 4</p>
+					<p>
+						<b>R$1.199,00 à vista</b>
+					</p>
+					<p style="font-size: 18px;">em até 4x sem juros</p>
+					<p style="font-size: 20px;">ou</p>
+					<small> 10x de</small> <small>R$150,00</small> <a
+						class="btn btn-success" style="width: 80%; font-size: 18px;"
+						href="carrinho.jsf"> Comprar</a>
+				</div>
+			</div>
+
+			<div class="produto-descricao">
+				<p>
+					<b>Descrição:</b>
+				</p>
+				<p
+					style="font-size: small; padding-left: 10px; padding-right: 10px;">
+					O Sistema do PS4 foca nos jogadores, garantindo que os melhores
+					jogos e a experiência mais imersiva seja possível na plataforma. O
+					console possui seu poder gráfico baseado em um processador
+					poderoso, que possui oito núcleos funcionando a 64 bits. Entre em
+					diversos desafios com sua comunidade gamer e compartilhe seus
+					triúnfos épicos ao apertar um simples botão, com as novas
+					funcionalidades de Streaming, gravação de vídeo e screenshots.</p>
+			</div>
+		</div>
+
+
+
+
+
+	</ui:define>
+</ui:composition>
+
+</html>

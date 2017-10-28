@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+
+
+<ui:define name="conteudo">
+	<div class="container"
+		style="background-color: #CCEAF4; margin-top: 3px;">
+		<h2 align="center">Cadastro de Produto</h2>
+		<form jsf:id="form" method="post" enctype="multipart/form-data">
+
+			<div class="form-group">
+				<label for="codigo">Código:</label> <input type="text"
+					class="form-control" id="codigo" placeholder="Código"
+					readonly="readonly" />
+			</div>
+
+			<div class="form-group">
+				<label for="nome">Nome:</label> <input jsf:id="nomeProduto"
+					jsf:value="#{mBeanProduto.nome}" type="text" class="form-control"
+					id="nome" placeholder="Informe o nome" required="required" />
+			</div>
+
+			<div class="form-group">
+				<label for="tipo">Tipo:</label> <select class="custom-select"
+					id="tipo">
+					<option selected="" />
+					<option value="1">Console</option>
+					<option value="2">Acessório</option>
+					<option value="3">Jogo</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="valor">Valor:</label> <input jsf:id="valorProduto"
+					jsf:value="#{mBeanProduto.valor}" type="text" class="form-control"
+					id="valor" placeholder="Informe o valor" required="required" />
+			</div>
+
+			<div class="form-group">
+				<label for="imagem">Imagem:</label> <input jsf:id="imagemProduto"
+					type="file" class="form-control"
+					id="imagem"/>
+			</div>
+
+			<label for="descricaoProduto">Descrição:</label>
+			<textarea jsf:id="descricaoProduto"
+				jsf:value="#{mBeanProduto.descricao}" class="form-control" rows="3"
+				id="descricaoProduto"></textarea>
+
+			<br />
+			<div style="text-align: center;">
+				<button jsf:id="btnSalvar" jsf:action="#{mBeanProduto.salvar}"
+					type="submit" class="btn btn-primary"
+					style="margin-bottom: 5px;">Salvar</button>
+				<button type="reset" class="btn btn-secondary" 
+				style="margin-bottom: 5px;">Limpar</button>
+
+			</div>
+
+
+
+		</form>
+	</div>
+
+	<h:form>
+	<table class="table table-bordered"
+		style="width: 80%; margin-left: 10%;">
+
+		<tr>
+			<th>Código do Produto</th>
+			<th>Nome do Produto</th>
+			<!-- <th>Tipo do Produto</th> -->
+			<th>Valor do Produto</th>
+			<th>Imagem do Produto</th>
+			<th>Ações</th>
+			<!-- 	<th>Descricao</th> -->
+		</tr>
+
+		<ui:repeat var="produto" value="#{mBeanProduto.produtos}">
+			<tr style="width: 80%;">
+				<td>1</td>
+				<td>#{produto.nome}</td>
+				<td>R$ #{produto.valor}</td>
+				<td>#{produto.imagem}</td>
+				<td><button jsf:id="btnTeste" jsf:action="#{mBeanProduto.excluir(produto)}"
+				type="submit" class="btn btn-danger" onclick="if(!confirm('Tem certeza que deseja excluir?')) {return false;}">Excluir</button>
+					</td>
+			</tr>
+		</ui:repeat>
+
+	</table>
+	</h:form>
+	
+		<form jsf:id="formReset" method="post">
+		<div style="text-align: center; margin-bottom: 5px;">
+
+			<button jsf:id="btnResetar" jsf:action="#{mBeanProduto.resetar}"
+				type="submit" class="btn btn-danger">Resetar Lista</button>
+		</div>
+	</form>
+</ui:define>
+
+	<ui:define name="script">
+	<script>
+		$('#valor').mask('0.000,00', {
+			reverse : true
+		});
+	</script>
+	</ui:define>
+	
+</ui:composition>
+</html>
