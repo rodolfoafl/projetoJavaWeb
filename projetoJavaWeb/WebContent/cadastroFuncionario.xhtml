@@ -39,7 +39,7 @@
 
 
 			<div style="text-align: center;">
-				<button jsf:id="btnSalvar" jsf:action="#{mBeanFuncionario.salvar}"
+				<button jsf:id="btnSalvar" jsf:action="#{mBeanFuncionario.salvarBanco}"
 					type="submit" class="btn btn-primary" style="margin-bottom: 5px;">
 				Salvar
 				</button>
@@ -69,9 +69,10 @@
 					<td>#{funcionario.nome}</td>
 					<td>#{funcionario.cpf}</td>
 					<td>R$ #{funcionario.salario}</td>
-					<td><button jsf:id="btnTeste" jsf:action="#{mBeanFuncionario.excluir(funcionario)}"
-				type="submit" class="btn btn-danger" onclick="if(!confirm('Tem certeza que deseja excluir?')) {return false;}">Excluir</button></td>
-					<!-- <td>1</td> -->
+					<td><button jsf:id="btnTeste" jsf:action="#{mBeanFuncionario.excluirBanco(funcionario)}"
+				type="submit" class="btn btn-danger" onclick="if(!confirm('Tem certeza que deseja excluir?')) {return false;}">Excluir</button>
+					</td>
+					
 				</tr>
 			</ui:repeat>
 
