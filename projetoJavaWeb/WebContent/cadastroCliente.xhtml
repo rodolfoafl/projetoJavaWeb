@@ -12,7 +12,7 @@
 		style="background-color: #CCEAF4; margin-top: 3px;">
 		<h2 align="center">Cadastro de Cliente</h2>
 		<form jsf:id="form" method="post">
-
+			<h:messages></h:messages>
 			<div class="form-group">
 				<label for="nome">Nome:</label> <input jsf:id="nomeCliente"
 					jsf:value="#{mBeanCliente.nome}" type="text" class="form-control"
@@ -28,8 +28,13 @@
 			</div>
 
 			<div class="form-group">
-				<label for="data">Data de cadastro:</label> <input type="date"
-					class="form-control" id="data" placeholder="00/00/0000" />
+				<label for="data">Data de cadastro:</label> 
+				<input type="date"
+					class="form-control" placeholder="00/00/0000"
+					jsf:value="#{mBeanCliente.dataCadastro}"
+					jsf:id="data">
+						<f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT-3"></f:convertDateTime>
+					</input>
 			</div>
 
 			<div class="form-group">
@@ -69,7 +74,7 @@
 	</div>
 	<h:form>
 	<table class="table table-bordered"
-		style="width: 80%; margin-left: 10%;">
+		style="width: 90%; margin-left: 2%;">
 
 		<tr>
 			<th>Nome do Cliente</th>
@@ -77,6 +82,7 @@
 			<th>Endereço do Cliente</th>
 			<th>CEP do Cliente</th>
 			<th>Telefone do Cliente</th>
+			<th>Data do cadastro</th>
 			<th>Ações</th>
 
 		</tr>
@@ -88,6 +94,7 @@
 				<td>#{cliente.endereco}</td>
 				<td>#{cliente.cep}</td>
 				<td>#{cliente.telefone}</td>
+				<td>#{cliente.dataCadastro}</td>
 				<td><button jsf:id="btnTeste" jsf:action="#{mBeanCliente.excluir(cliente)}"
 				type="submit" class="btn btn-danger" onclick="if(!confirm('Tem certeza que deseja excluir?')) {return false;}">Excluir</button></td>
 									
@@ -108,7 +115,7 @@
 
 <ui:define name="script">
 	<script>
-		$('#data').mask('00/00/0000');
+
 		$('#cpf').mask('000.000.000-00');
 		$('#cep').mask('00000-000');
 		$('#telefone').mask('(00) 0000-0000');

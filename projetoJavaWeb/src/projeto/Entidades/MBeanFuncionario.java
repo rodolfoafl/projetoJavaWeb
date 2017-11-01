@@ -1,5 +1,6 @@
 package projeto.Entidades;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
@@ -16,9 +17,9 @@ public class MBeanFuncionario {
 	private String nome;
 	private String cpf;
 	// private Integer funcao;
-	private String salario;
+	private BigDecimal salario;
 
-	
+	/*Método para salvar um funcionário no banco de dados e no arraylist*/
 	public void salvarBanco() {
 		Funcionario f = new Funcionario();
 		f.setNome(nome);
@@ -42,11 +43,14 @@ public class MBeanFuncionario {
 //		funcionarios.remove(funcionario);
 //	}
 	
+	/*Método para excluir um funcionário do banco de dados e do arraylist*/
 	public void excluirBanco(Funcionario funcionario) {
 		funcionarios.remove(funcionario);
 		fDAO.excluir(funcionario);
 	}
 	
+	
+	/*Método para resetar o arraylist*/
 	public void resetar() {
 		funcionarios.clear();
 	}
@@ -74,13 +78,15 @@ public class MBeanFuncionario {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	
-	public String getSalario() {
+
+	public BigDecimal getSalario() {
 		return salario;
 	}
 
-	public void setSalario(String salario) {
+	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
+	
+	
 
 }

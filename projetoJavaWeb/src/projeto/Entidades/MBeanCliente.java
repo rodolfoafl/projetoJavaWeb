@@ -1,6 +1,7 @@
 package projeto.Entidades;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 
@@ -10,7 +11,7 @@ public class MBeanCliente {
 
 	private String nome;
 	private String cpf;
-	// private Date dataCadastro;
+	private Date dataCadastro;
 	private String endereco;
 	private String cep;
 	private String telefone;
@@ -22,6 +23,7 @@ public class MBeanCliente {
 		cliente.setEndereco(endereco);
 		cliente.setCep(cep);
 		cliente.setTelefone(telefone);
+		cliente.setDataCadastro(dataCadastro);
 
 		clientes.add(cliente);
 	}
@@ -32,6 +34,14 @@ public class MBeanCliente {
 
 	public void resetar() {
 		clientes.clear();
+	}
+	
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
 
 	public ArrayList<Cliente> getClientes() {

@@ -1,11 +1,13 @@
 package projeto.Entidades;
 
+import java.math.BigDecimal;
+
 public class Produto {
 
 	// private Integer codigo;
 	private String nome;
 	// private Integer tipo;
-	private String valor;
+	private BigDecimal valor;
 	private String imagem;
 	private String descricao;
 
@@ -17,11 +19,11 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public String getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(String valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 

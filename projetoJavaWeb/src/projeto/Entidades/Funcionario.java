@@ -1,5 +1,7 @@
 package projeto.Entidades;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,20 +10,17 @@ import javax.persistence.Id;
 
 @Entity
 public class Funcionario {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
-	@Column(name="nome")
+
 	private String nome;
-	
-	@Column(name="cpf")
+
 	private String cpf;
-	
-	@Column(name="salario")
-	private String salario;
-	
+
+	private BigDecimal salario;
+
 	public Integer getId() {
 		return id;
 	}
@@ -30,11 +29,11 @@ public class Funcionario {
 		this.id = id;
 	}
 
-	public String getSalario() {
+	public BigDecimal getSalario() {
 		return salario;
 	}
 
-	public void setSalario(String salario) {
+	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
 

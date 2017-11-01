@@ -6,7 +6,7 @@ public class Cliente {
 
 	private String nome;
 	private String cpf;
-	// private Date dataCadastro;
+	private Date dataCadastro;
 	private String endereco;
 	private String cep;
 	private String telefone;
@@ -49,6 +49,14 @@ public class Cliente {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
 
 }

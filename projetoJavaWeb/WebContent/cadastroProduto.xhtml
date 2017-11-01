@@ -39,7 +39,10 @@
 			<div class="form-group">
 				<label for="valor">Valor:</label> <input jsf:id="valorProduto"
 					jsf:value="#{mBeanProduto.valor}" type="text" class="form-control"
-					id="valor" placeholder="Informe o valor" required="required" />
+					id="valor" placeholder="Informe o valor" required="required" 
+					>
+					<f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber>
+					</input>
 			</div>
 
 			<div class="form-group">

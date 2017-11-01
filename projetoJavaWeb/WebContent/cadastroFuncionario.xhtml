@@ -34,7 +34,9 @@
 				<label for="salario">Salário:</label> <input
 					jsf:id="salarioFuncionario" jsf:value="#{mBeanFuncionario.salario}"
 					type="text" class="form-control" id="salario"
-					placeholder="Informe o salário" required="required" />
+					placeholder="Informe o salário" required="required">
+					<f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber>
+					</input>
 			</div>
 
 

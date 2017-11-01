@@ -1,5 +1,6 @@
 package projeto.Entidades;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
@@ -12,7 +13,7 @@ public class MBeanProduto {
 	// private Integer codigo;
 	private String nome;
 	// private Integer tipo;
-	private String valor;
+	private BigDecimal valor;
 	private String imagem;
 	private String descricao;
 
@@ -50,11 +51,11 @@ public class MBeanProduto {
 		this.nome = nome;
 	}
 
-	public String getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(String valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 
