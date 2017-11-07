@@ -1,6 +1,9 @@
 package projeto.DAO;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import projeto.Entidades.Funcionario;
 
@@ -22,5 +25,10 @@ public class FuncionarioDAO {
 		}
 		em.getTransaction().commit();
 	}
-
+	
+	public List<Funcionario> consulta(){
+		Query q = em.createQuery("SELECT f FROM Funcionario f");
+		List<Funcionario> results = (List<Funcionario>)q.getResultList();
+		return results;
+	}
 }

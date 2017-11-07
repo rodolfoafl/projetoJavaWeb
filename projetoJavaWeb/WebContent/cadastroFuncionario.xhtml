@@ -66,7 +66,7 @@
 				<!-- <th>Função do Funcionário</th> -->
 			</tr>
 
-			<ui:repeat var="funcionario" value="#{mBeanFuncionario.funcionarios}">
+			<ui:repeat var="funcionario" value="#{mBeanFuncionario.funcionariosBD}">
 				<tr style="width: 80%;">
 					<td>#{funcionario.nome}</td>
 					<td>#{funcionario.cpf}</td>
@@ -81,13 +81,13 @@
 		</table>
 	</h:form>
 
-	<form jsf:id="formReset" method="post">
+<!-- 	<form jsf:id="formReset" method="post">
 		<div style="text-align: center; margin-bottom: 5px;">
 
 			<button jsf:id="btnResetar" jsf:action="#{mBeanFuncionario.resetar}"
 				type="submit" class="btn btn-warning">Resetar Lista</button>
 		</div>
-	</form>
+	</form> -->
 		</ui:define>
 	
 	
