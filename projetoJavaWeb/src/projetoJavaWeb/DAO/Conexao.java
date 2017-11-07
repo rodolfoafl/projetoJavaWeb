@@ -1,4 +1,4 @@
-package projeto.DAO;
+package projetoJavaWeb.DAO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

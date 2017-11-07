@@ -1,4 +1,4 @@
-package projeto.Entidades;
+package projetoJavaWeb.entity;
 
 import java.math.BigDecimal;
 

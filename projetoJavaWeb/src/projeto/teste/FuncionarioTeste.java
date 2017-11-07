@@ -2,8 +2,8 @@ package projeto.teste;
 
 import org.junit.Test;
 
-import projeto.DAO.FuncionarioDAO;
-import projeto.Entidades.Funcionario;
+import projetoJavaWeb.DAO.FuncionarioDAO;
+import projetoJavaWeb.entity.Funcionario;
 
 public class FuncionarioTeste {
 	

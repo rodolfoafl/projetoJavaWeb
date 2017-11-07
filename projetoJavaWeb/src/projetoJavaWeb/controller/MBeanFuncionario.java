@@ -1,4 +1,4 @@
-package projeto.Entidades;
+package projetoJavaWeb.controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -6,7 +6,8 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
-import projeto.DAO.FuncionarioDAO;
+import projetoJavaWeb.DAO.FuncionarioDAO;
+import projetoJavaWeb.entity.Funcionario;
 
 @ManagedBean(name = "mBeanFuncionario")
 public class MBeanFuncionario {

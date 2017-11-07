@@ -1,9 +1,11 @@
-package projeto.Entidades;
+package projetoJavaWeb.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
+
+import projetoJavaWeb.entity.Cliente;
 
 @ManagedBean(name = "mBeanCliente")
 public class MBeanCliente {

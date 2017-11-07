@@ -1,11 +1,11 @@
-package projeto.DAO;
+package projetoJavaWeb.DAO;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import projeto.Entidades.Funcionario;
+import projetoJavaWeb.entity.Funcionario;
 
 public class FuncionarioDAO {
 	EntityManager em = Conexao.createEntityManager();

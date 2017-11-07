@@ -1,9 +1,11 @@
-package projeto.Entidades;
+package projetoJavaWeb.controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
+
+import projetoJavaWeb.entity.Produto;
 
 @ManagedBean(name = "mBeanProduto")
 public class MBeanProduto {
