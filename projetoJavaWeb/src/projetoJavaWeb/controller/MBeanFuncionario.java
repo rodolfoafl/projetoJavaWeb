@@ -16,7 +16,7 @@ public class MBeanFuncionario {
 
 	// private static ArrayList<Funcionario> funcionarios = new
 	// ArrayList<Funcionario>();
-	private static List<Funcionario> funcionariosBD;
+	private List<Funcionario> funcionariosBD;
 
 	private String nome;
 	private String cpf;
@@ -34,15 +34,20 @@ public class MBeanFuncionario {
 		fDAO.salvar(f);
 	}
 
+
 	/* Método para excluir um funcionário do banco de dados */
 	public void excluirBanco(Funcionario funcionario) {
 		// funcionarios.remove(funcionario);
 		fDAO.excluir(funcionario);
 	}
+	
+	public void alterar(Funcionario funcionario) {
+		fDAO.alterar(funcionario);
+	}
 
 	/* Método que realiza consulta no banco de dados */
 	public List<Funcionario> getFuncionariosBD() {
-		return fDAO.consulta();
+		return fDAO.consultar();
 	}
 
 	public String getNome() {
@@ -67,6 +72,10 @@ public class MBeanFuncionario {
 
 	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
+	}
+
+	public void setFuncionariosBD(List<Funcionario> funcionariosBD) {
+		this.funcionariosBD = funcionariosBD;
 	}
 
 	/* MÉTODOS OBSOLETOS, USADOS COM ARRAYLIST */

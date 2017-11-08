@@ -5,95 +5,101 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:composition template="template.xhtml">
+<ui:composition template="template.xhtml">
 
 	<ui:define name="conteudo">
 
 
 
-	<div class="container"
-		style="background-color: #CCEAF4; margin-top: 3px;">
-		<h2 align="center">Cadastro de Funcionário</h2>
-		<form jsf:id="form" method="post">
+		<div class="container"
+			style="background-color: #CCEAF4; margin-top: 3px;">
+			<h2 align="center">Cadastro de Funcionário</h2>
+			<form jsf:id="form" method="post">
 
-			<div class="form-group">
-				<label for="cliente">Nome:</label> <input jsf:id="nomeFuncionario"
-					jsf:value="#{mBeanFuncionario.nome}" type="text"
-					class="form-control" id="nome" placeholder="Informe o nome"
-					required="required" />
-			</div>
+				<div class="form-group">
+					<label for="cliente">Nome:</label> <input jsf:id="nomeFuncionario"
+						jsf:value="#{mBeanFuncionario.nome}" type="text"
+						class="form-control" id="nome" placeholder="Informe o nome"
+						required="required" />
+				</div>
 
-			<div class="form-group">
-				<label for="cpf">CPF:</label> <input jsf:id="cpfFuncionario"
-					jsf:value="#{mBeanFuncionario.cpf}" type="text"
-					class="form-control" id="cpf" placeholder="Informe o CPF"
-					required="required" />
-			</div>
+				<div class="form-group">
+					<label for="cpf">CPF:</label> <input jsf:id="cpfFuncionario"
+						jsf:value="#{mBeanFuncionario.cpf}" type="text"
+						class="form-control" id="cpf" placeholder="Informe o CPF"
+						required="required" />
+				</div>
 
-			<div class="form-group">
-				<label for="salario">Salário:</label> <input
-					jsf:id="salarioFuncionario" jsf:value="#{mBeanFuncionario.salario}"
-					type="text" class="form-control" id="salario"
-					placeholder="Informe o salário" required="required">
+				<div class="form-group">
+					<label for="salario">Salário:</label> <input
+						jsf:id="salarioFuncionario"
+						jsf:value="#{mBeanFuncionario.salario}" type="text"
+						class="form-control" id="salario" placeholder="Informe o salário"
+						required="required">
 					<f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber>
 					</input>
-			</div>
+				</div>
 
 
-			<div style="text-align: center;">
-				<button jsf:id="btnSalvar" jsf:action="#{mBeanFuncionario.salvarBanco}"
-					type="submit" class="btn btn-primary" style="margin-bottom: 5px;">
-				Salvar
-				</button>
-				<button type="reset" class="btn btn-secondary" style="margin-bottom: 5px;">
-					Limpar
-				</button>
+				<div style="text-align: center;">
+					<button jsf:id="btnSalvar"
+						jsf:action="#{mBeanFuncionario.salvarBanco}" type="submit"
+						class="btn btn-primary" style="margin-bottom: 5px;">
+						Salvar</button>
+					<button type="reset" class="btn btn-secondary"
+						style="margin-bottom: 5px;">Limpar</button>
 
-			</div>
+				</div>
 
-		</form>
-	</div>
+			</form>
+		</div>
 
-	<h:form>
-		<table class="table table-bordered"
-			style="width: 80%; margin-left: 10%;">
+		<h:form>
+			<table class="table table-bordered"
+				style="width: 80%; margin-left: 10%;">
 
-			<tr>
-				<th>Nome do Funcionário</th>
-				<th>CPF do Funcionário</th>
-				<th>Salário do Funcionário</th>
-				<th>Ações</th>
-				<!-- <th>Função do Funcionário</th> -->
-			</tr>
-
-			<ui:repeat var="funcionario" value="#{mBeanFuncionario.funcionariosBD}">
-				<tr style="width: 80%;">
-					<td>#{funcionario.nome}</td>
-					<td>#{funcionario.cpf}</td>
-					<td>R$ #{funcionario.salario}</td>
-					<td><button jsf:id="btnTeste" jsf:action="#{mBeanFuncionario.excluirBanco(funcionario)}"
-				type="submit" class="btn btn-danger" onclick="if(!confirm('Tem certeza que deseja excluir?')) {return false;}">Excluir</button>
-					</td>
-					
+				<tr>
+					<th>Nome do Funcionário</th>
+					<th>CPF do Funcionário</th>
+					<th>Salário do Funcionário</th>
+					<th>Ações</th>
+					<!-- <th>Função do Funcionário</th> -->
 				</tr>
-			</ui:repeat>
 
-		</table>
-	</h:form>
+				<ui:repeat var="funcionario"
+					value="#{mBeanFuncionario.funcionariosBD}">
+					<tr style="width: 80%;">
+						<td>#{funcionario.nome}</td>
+						<td>#{funcionario.cpf}</td>
+						<td>R$ #{funcionario.salario}</td>
+						<td><button jsf:id="btnTeste"
+								jsf:action="#{mBeanFuncionario.excluirBanco(funcionario)}"
+								type="submit" class="btn btn-danger"
+								onclick="if(!confirm('Tem certeza que deseja excluir?')) {return false;}">Excluir</button>
+							<button jsf:id="btnEdt"
+								jsf:action="#{mBeanFuncionario.alterar(funcionario)}"
+								type="submit" class="btn btn-danger">Editar</button>
+						</td>
 
 
-		</ui:define>
-	
-	
-	<ui:define name="script">
-	<script>
-		$('#cpf').mask('000.000.000-00');
-		$('#salario').mask('0.000,00', {
-			reverse : true
-		});
-		
-	</script>
+					</tr>
+				</ui:repeat>
+
+			</table>
+		</h:form>
+
+
 	</ui:define>
-	</ui:composition>
+
+
+	<ui:define name="script">
+		<script>
+			$('#cpf').mask('000.000.000-00');
+			$('#salario').mask('0.000,00', {
+				reverse : true
+			});
+		</script>
+	</ui:define>
+</ui:composition>
 
 </html>
