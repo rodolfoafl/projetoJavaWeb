@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import projetoJavaWeb.DAO.FuncionarioDAO;
@@ -18,6 +19,7 @@ public class MBeanFuncionario {
 	// ArrayList<Funcionario>();
 	private List<Funcionario> funcionariosBD;
 
+	private Integer id;
 	private String nome;
 	private String cpf;
 	// private Integer funcao;
@@ -26,28 +28,42 @@ public class MBeanFuncionario {
 	/* Método para salvar um funcionário no banco de dados */
 	public void salvarBanco() {
 		Funcionario f = new Funcionario();
+		f.setId(id);
 		f.setNome(nome);
 		f.setCpf(cpf);
 		f.setSalario(salario);
-
-		// funcionarios.add(f);
-		fDAO.salvar(f);
+		
+		if(id == null) {
+			fDAO.salvar(f);
+		}else {
+			fDAO.alterar(f);
+		}
 	}
-
 
 	/* Método para excluir um funcionário do banco de dados */
 	public void excluirBanco(Funcionario funcionario) {
 		// funcionarios.remove(funcionario);
 		fDAO.excluir(funcionario);
 	}
-	
+
 	public void alterar(Funcionario funcionario) {
-		fDAO.alterar(funcionario);
+		this.id = funcionario.getId();
+		this.nome = funcionario.getNome();
+		this.cpf = funcionario.getCpf();
+		this.salario = funcionario.getSalario();
 	}
 
 	/* Método que realiza consulta no banco de dados */
 	public List<Funcionario> getFuncionariosBD() {
 		return fDAO.consultar();
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {

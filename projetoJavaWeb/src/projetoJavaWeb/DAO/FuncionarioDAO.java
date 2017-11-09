@@ -8,7 +8,7 @@ import javax.persistence.Query;
 import projetoJavaWeb.entity.Funcionario;
 
 public class FuncionarioDAO {
-	EntityManager em = Conexao.createEntityManager();
+	EntityManager em = Conexao.getInstance().createEntityManager();
 
 	public void salvar(Funcionario funcionario) {
 
@@ -31,15 +31,10 @@ public class FuncionarioDAO {
 		List<Funcionario> results = (List<Funcionario>) q.getResultList();
 		return results;
 	}
-
+	
 	public void alterar(Funcionario funcionario) {
-		//em.getTransaction().begin();
-
-		Query query = em.createQuery("update Funcionario set nome = :novoNome" + " where id = :idFuncionario");
-		query.setParameter("novoNome", "EDITADO");
-		query.setParameter("idFuncionario", funcionario.getId());
-		int result = query.executeUpdate();
-
-		//em.getTransaction().commit();
+		em.getTransaction().begin();
+		em.merge(funcionario);
+		em.getTransaction().commit();
 	}
 }
