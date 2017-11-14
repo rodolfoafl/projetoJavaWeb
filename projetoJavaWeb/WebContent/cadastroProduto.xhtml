@@ -46,6 +46,7 @@
 
 				<div class="form-group">
 					<label for="imagem">Imagem:</label> <input jsf:id="imagemProduto"
+						jsf:value="#{mBeanProduto.imagem}"
 						type="file" class="form-control" id="imagem" />
 				</div>
 
@@ -87,7 +88,7 @@
 						<td>1</td>
 						<td>#{produto.nome}</td>
 						<td>R$ #{produto.valor}</td>
-						<td>#{produto.imagem}</td>
+						<td>#</td>
 						<td>
 							<button jsf:id="btnTeste"
 								jsf:action="#{mBeanProduto.excluir(produto)}" type="submit"

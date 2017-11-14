@@ -19,8 +19,8 @@ public class Produto {
 	private String nome;
 	// private Integer tipo;
 	private BigDecimal valor;
-	private String imagem;
 	private String descricao;
+	private String caminhoImagem;
 
 	public Integer getId() {
 		return id;
@@ -46,12 +46,12 @@ public class Produto {
 		this.valor = valor;
 	}
 
-	public String getImagem() {
-		return imagem;
+	public String getCaminhoImagem() {
+		return caminhoImagem;
 	}
 
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
 	}
 
 	public String getDescricao() {
