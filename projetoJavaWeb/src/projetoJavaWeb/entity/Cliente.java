@@ -2,7 +2,19 @@ package projetoJavaWeb.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CLIENTE")
 public class Cliente {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 
 	private String nome;
 	private String cpf;
@@ -10,6 +22,14 @@ public class Cliente {
 	private String endereco;
 	private String cep;
 	private String telefone;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;

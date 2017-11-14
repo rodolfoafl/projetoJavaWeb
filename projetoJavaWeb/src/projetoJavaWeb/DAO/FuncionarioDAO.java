@@ -11,7 +11,6 @@ public class FuncionarioDAO {
 	EntityManager em = Conexao.getInstance().createEntityManager();
 
 	public void salvar(Funcionario funcionario) {
-
 		em.getTransaction().begin();
 		em.persist(funcionario);
 		em.getTransaction().commit();
@@ -26,10 +25,10 @@ public class FuncionarioDAO {
 		em.getTransaction().commit();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Funcionario> consultar() {
-		Query q = em.createQuery("SELECT f FROM Funcionario f");
-		List<Funcionario> results = (List<Funcionario>) q.getResultList();
-		return results;
+		Query q = em.createQuery("FROM Funcionario");
+		return (List<Funcionario>) q.getResultList();
 	}
 	
 	public void alterar(Funcionario funcionario) {

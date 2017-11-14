@@ -6,120 +6,120 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="template.xhtml">
-<ui:define name="conteudo">
+	<ui:define name="conteudo">
 
-	<div class="container"
-		style="background-color: #CCEAF4; margin-top: 3px;">
-		<h2 align="center">Cadastro de Cliente</h2>
-		<form jsf:id="form" method="post">
-			<h:messages></h:messages>
-			<div class="form-group">
-				<label for="nome">Nome:</label> <input jsf:id="nomeCliente"
-					jsf:value="#{mBeanCliente.nome}" type="text" class="form-control"
-					id="nome" placeholder="Informe o nome" required="required"/>
-			</div>
+		<div class="container"
+			style="background-color: #CCEAF4; margin-top: 3px;">
+			<h2 align="center">Cadastro de Cliente</h2>
 
-			<div class="form-group">
-				<label for="cpf">CPF:</label> <input 
-				jsf:id="cpfCliente"
-				jsf:value="#{mBeanCliente.cpf}"
-				type="text"
-					class="form-control" id="cpf" placeholder="Informe o CPF" required="required"/>
-			</div>
+			<form jsf:id="form" method="post">
+				<h:messages></h:messages>
+				
+					<div class="form-group">
+					<input jsf:id="id"
+						jsf:value="#{mBeanCliente.id}" type="number"
+						class="form-control" id="id"
+						readonly="readonly" hidden="true"/>
+				</div>
+				
+				<div class="form-group">
+					<label for="nome">Nome:</label> <input jsf:id="nomeCliente"
+						jsf:value="#{mBeanCliente.nome}" type="text" class="form-control"
+						id="nome" placeholder="Informe o nome" required="required" />
+				</div>
 
-			<div class="form-group">
-				<label for="data">Data de cadastro:</label> 
-				<input type="date"
-					class="form-control" placeholder="00/00/0000"
-					jsf:value="#{mBeanCliente.dataCadastro}"
-					jsf:id="data">
-						<f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT-3"></f:convertDateTime>
+				<div class="form-group">
+					<label for="cpf">CPF:</label> <input jsf:id="cpfCliente"
+						jsf:value="#{mBeanCliente.cpf}" type="text" class="form-control"
+						id="cpf" placeholder="Informe o CPF" required="required" />
+				</div>
+
+				<div class="form-group">
+					<label for="data">Data de cadastro:</label> <input type="date"
+						class="form-control" placeholder="00/00/0000"
+						jsf:value="#{mBeanCliente.dataCadastro}" jsf:id="data">
+					<f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT-3"></f:convertDateTime>
 					</input>
-			</div>
+				</div>
 
-			<div class="form-group">
-				<label for="endereço">Endereço:</label> <input 
-				jsf:id="enderecoCliente"
-					jsf:value="#{mBeanCliente.endereco}"
-				type="text"
-					class="form-control" id="endereço" placeholder="Informe o endereço" />
-			</div>
+				<div class="form-group">
+					<label for="endereço">Endereço:</label> <input
+						jsf:id="enderecoCliente" jsf:value="#{mBeanCliente.endereco}"
+						type="text" class="form-control" id="endereço"
+						placeholder="Informe o endereço" />
+				</div>
 
-			<div class="form-group">
-				<label for="cep">CEP:</label> <input 
-				jsf:id="cepCliente"
-					jsf:value="#{mBeanCliente.cep}"
-				type="text"
-					class="form-control" id="cep" placeholder="Informe o CEP"/>
-			</div>
+				<div class="form-group">
+					<label for="cep">CEP:</label> <input jsf:id="cepCliente"
+						jsf:value="#{mBeanCliente.cep}" type="text" class="form-control"
+						id="cep" placeholder="Informe o CEP" />
+				</div>
 
-			<div class="form-group">
-				<label for="telefone">Telefone:</label> <input 
-				jsf:id="telefoneCliente"
-				jsf:value="#{mBeanCliente.telefone}"
-				type="text"
-					class="form-control" id="telefone" placeholder="Informe o telefone" />
-			</div>
+				<div class="form-group">
+					<label for="telefone">Telefone:</label> <input
+						jsf:id="telefoneCliente" jsf:value="#{mBeanCliente.telefone}"
+						type="text" class="form-control" id="telefone"
+						placeholder="Informe o telefone" />
+				</div>
 
-			<div style="text-align: center;">
-				<button jsf:id="btnSalvar" jsf:action="#{mBeanCliente.salvar}"
-					type="submit" class="btn btn-primary" style="margin-bottom: 5px;">Salvar</button>
-				<button type="reset" class="btn btn-secondary"
-					style="margin-bottom: 5px;">Limpar</button>
+				<div style="text-align: center;">
+					<button jsf:id="btnSalvar" jsf:action="#{mBeanCliente.salvar}"
+						type="submit" class="btn btn-primary" style="margin-bottom: 5px;">Salvar</button>
+					<button type="reset" class="btn btn-secondary"
+						style="margin-bottom: 5px;">Limpar</button>
 
-			</div>
+				</div>
 
 
-		</form>
-	</div>
-	<h:form>
-	<table class="table table-bordered"
-		style="width: 90%; margin-left: 2%;">
-
-		<tr>
-			<th>Nome do Cliente</th>
-			<th>CPF do Cliente</th>
-			<th>Endereço do Cliente</th>
-			<th>CEP do Cliente</th>
-			<th>Telefone do Cliente</th>
-			<th>Data do cadastro</th>
-			<th>Ações</th>
-
-		</tr>
-
-		<ui:repeat var="cliente" value="#{mBeanCliente.clientes}">
-			<tr style="width: 80%;">
-				<td>#{cliente.nome}</td>
-				<td>#{cliente.cpf}</td>
-				<td>#{cliente.endereco}</td>
-				<td>#{cliente.cep}</td>
-				<td>#{cliente.telefone}</td>
-				<td>#{cliente.dataCadastro}</td>
-				<td><button jsf:id="btnTeste" jsf:action="#{mBeanCliente.excluir(cliente)}"
-				type="submit" class="btn btn-danger" onclick="if(!confirm('Tem certeza que deseja excluir?')) {return false;}">Excluir</button></td>
-									
-			</tr>
-		</ui:repeat>
-
-	</table>
-	</h:form>
-
-	<form jsf:id="formReset" method="post">
-		<div style="text-align: center; margin-bottom: 5px;">
-
-			<button jsf:id="btnResetar" jsf:action="#{mBeanCliente.resetar}"
-				type="submit" class="btn btn-danger">Resetar Lista</button>
+			</form>
 		</div>
-	</form>
-	</ui:define>	
+		<h:form>
+			<table class="table table-bordered"
+				style="width: 90%; margin-left: 5%;">
 
-<ui:define name="script">
-	<script>
+				<tr>
+					<th>Nome do Cliente</th>
+					<th>CPF do Cliente</th>
+					<th>Endereço do Cliente</th>
+					<th>CEP do Cliente</th>
+					<th>Telefone do Cliente</th>
+					<th>Data do cadastro</th>
+					<th>Ações</th>
 
-		$('#cpf').mask('000.000.000-00');
-		$('#cep').mask('00000-000');
-		$('#telefone').mask('(00) 0000-0000');
-	</script>
+				</tr>
+
+				<ui:repeat var="cliente" value="#{mBeanCliente.clientes}">
+					<tr style="width: 80%;">
+						<td>#{cliente.nome}</td>
+						<td>#{cliente.cpf}</td>
+						<td>#{cliente.endereco}</td>
+						<td>#{cliente.cep}</td>
+						<td>#{cliente.telefone}</td>
+						<td>#{cliente.dataCadastro}</td>
+						<td>
+							<button jsf:id="btnTeste"
+								jsf:action="#{mBeanCliente.excluir(cliente)}" type="submit"
+								class="btn btn-danger"
+								onclick="if(!confirm('Tem certeza que deseja excluir?')) {return false;}">Excluir</button>
+							<button jsf:id="btnEdt"
+								jsf:action="#{mBeanCliente.alterar(cliente)}"
+								type="submit" class="btn btn-danger" style="margin-left: 2px;">Editar</button>
+						</td>
+
+					</tr>
+				</ui:repeat>
+
+			</table>
+		</h:form>
+		
+	</ui:define>
+
+	<ui:define name="script">
+		<script>
+			$('#cpf').mask('000.000.000-00');
+			$('#cep').mask('00000-000');
+			$('#telefone').mask('(00) 0000-0000');
+		</script>
 	</ui:define>
 
 

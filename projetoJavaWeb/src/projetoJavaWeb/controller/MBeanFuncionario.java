@@ -15,14 +15,11 @@ public class MBeanFuncionario {
 
 	static FuncionarioDAO fDAO = new FuncionarioDAO();
 
-	// private static ArrayList<Funcionario> funcionarios = new
-	// ArrayList<Funcionario>();
 	private List<Funcionario> funcionariosBD;
 
 	private Integer id;
 	private String nome;
 	private String cpf;
-	// private Integer funcao;
 	private BigDecimal salario;
 
 	/* Método para salvar um funcionário no banco de dados */
@@ -46,6 +43,7 @@ public class MBeanFuncionario {
 		fDAO.excluir(funcionario);
 	}
 
+	/*Método para */
 	public void alterar(Funcionario funcionario) {
 		this.id = funcionario.getId();
 		this.nome = funcionario.getNome();
