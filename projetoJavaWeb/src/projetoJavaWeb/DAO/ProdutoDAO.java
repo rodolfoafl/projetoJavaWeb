@@ -36,4 +36,9 @@ public class ProdutoDAO {
 		Query q = em.createQuery("FROM Produto");
 		return (List<Produto>) q.getResultList();
 	}
+
+	public Produto buscar(Integer id) {
+		Produto produto = em.find(Produto.class, id);
+		return produto;
+	}
 }
