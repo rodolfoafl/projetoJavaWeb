@@ -29,17 +29,21 @@ public class MBeanProduto {
 
 	/* Método para salvar um produto no banco de dados */
 	public void salvar() {
-		
-		String caminhoImagem = "c:\\imagens\\" + imagem.getSubmittedFileName();
 
-		try {
-			byte[] bytesImagem = new byte[(int) imagem.getSize()];
-			imagem.getInputStream().read(bytesImagem);
-			File f = new File(caminhoImagem);
-			FileOutputStream fos = new FileOutputStream(f);
-			fos.write(bytesImagem);
-		} catch (Exception e) {
-			e.printStackTrace();
+		String caminhoImagem = "";
+
+		if (imagem != null && imagem.getSubmittedFileName() != null) {
+			caminhoImagem = "c:\\imagens\\" + imagem.getSubmittedFileName();
+			try {
+				byte[] bytesImagem = new byte[(int) imagem.getSize()];
+				imagem.getInputStream().read(bytesImagem);
+				File f = new File(caminhoImagem);
+				FileOutputStream fos = new FileOutputStream(f);
+				fos.write(bytesImagem);
+				fos.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		Produto p = new Produto();
