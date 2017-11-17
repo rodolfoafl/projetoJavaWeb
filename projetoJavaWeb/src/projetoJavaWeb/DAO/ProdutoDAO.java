@@ -21,7 +21,7 @@ public class ProdutoDAO {
 		em.merge(produto);
 		em.getTransaction().commit();
 	}
-
+	
 	public void excluir(Produto produto) {
 		em.getTransaction().begin();
 		Produto p = em.find(Produto.class, produto.getId());

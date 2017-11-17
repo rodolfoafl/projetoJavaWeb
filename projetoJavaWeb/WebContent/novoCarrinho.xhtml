@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="style">
+		<style>
+.carrinho {
+	height: 320px;
+	width: 1000px;
+	margin-top: 2%;
+	margin-left: 20%;
+	position: absolute;
+	background-color: #C2C8CE;
+}
+
+.item {
+	border: 1px solid black;
+	height: 25%;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	background-color: white;
+}
+
+.imagem {
+	margin-left: 5%;
+	margin-top: 4px;
+	height: 70px;
+	width: 90px;
+}
+
+.imagem2 {
+	margin-left: 5%;
+	margin-top: 4px;
+	height: 50px;
+	width: 70px;
+}
+
+.valorFinal {
+	border: 1px solid black;
+	float: right;
+	height: 50px;
+	width: 160px;
+	background-color: white;
+	margin-right: 100px;
+	margin-top: 1%;
+	text-align: center;
+}
+
+#finaliza {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	width: 20%;
+	font-size: 18px;
+}
+</style>
+	</ui:define>
+
+
+
+	<ui:define name="conteudo">
+		<h2 align="center" style="margin-top: 1%;">Finalizar Pedido</h2>
+
+		<form jsf:id="form" method="post">
+			<div class="carrinho">
+				<ui:repeat var="item" value="#{mBeanCarrinho.itens}">
+
+					<div class="item">
+
+						<h:graphicImage value="ServletImagem?id=#{item.produto.id}"
+							styleClass="imagem" />
+						<b style="margin-left: 10%;"></b> <small style="margin-left: 15%;">Quantidade:
+						</small> <h:outputText value="#{item.quantidade}"></h:outputText> <small
+							style="margin-left: 10%;">Nome: <b><h:outputText value="#{item.produto.nome}"></h:outputText></b>
+						</small>
+
+
+					</div>
+
+				</ui:repeat>
+
+
+				<div class="valorFinal">
+					<b>TOTAL: </b>
+					<p>R$ 1.378,00</p>
+				</div>
+
+				<a class="btn btn-success" id="finaliza" href="index.jsf">
+					Finalizar compra</a>
+			</div>
+		</form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

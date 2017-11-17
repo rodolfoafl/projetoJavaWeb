@@ -72,6 +72,14 @@ public class MBeanProduto {
 		this.valor = produto.getValor();
 		this.descricao = produto.getDescricao();
 	}
+	
+	public String carregarProduto(Produto produto) {
+		this.id = produto.getId();
+		this.nome = produto.getNome();
+		this.valor = produto.getValor();
+		this.descricao = produto.getDescricao();
+		return "novoDetalhes.jsf";
+	}
 
 	/* Método que realiza consulta no banco de dados */
 	public List<Produto> getProdutos() {
@@ -113,14 +121,6 @@ public class MBeanProduto {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-
-	// public String getImagem() {
-	// return imagem;
-	// }
-	//
-	// public void setImagem(String imagem) {
-	// this.imagem = imagem;
-	// }
 
 	public String getDescricao() {
 		return descricao;
