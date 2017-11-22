@@ -32,7 +32,7 @@ public class Item {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
 	public Produto getProduto() {
 		return produto;
 	}
@@ -44,7 +44,7 @@ public class Item {
 	public Integer getQuantidade() {
 		return quantidade;
 	}
-
+	
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}

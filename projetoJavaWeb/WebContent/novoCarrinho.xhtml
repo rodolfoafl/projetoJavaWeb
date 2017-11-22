@@ -27,6 +27,7 @@
 	margin-left: 10%;
 	margin-top: 1%;
 	background-color: white;
+	float: left;
 }
 
 .imagem {
@@ -48,12 +49,29 @@
 	text-align: center;
 }
 
-.finaliza {
+#finaliza {
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
 	width: 20%;
 	font-size: 18px;
+}
+
+#cancela {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	width: 20%;
+	font-size: 18px;
+}
+
+#remove {
+	width: 4%;
+	font-size: 18px;
+    text-align: center;
+    float: left;
+    margin-top: 25px;
+    margin-left: 25px;
 }
 </style>
 	</ui:define>
@@ -77,9 +95,16 @@
 						<h:outputText value="#{item.quantidade}"></h:outputText>
 						<small style="margin-left: 15%;">Valor: <b> R$<h:outputText
 									value="#{item.produto.valor}"></h:outputText></b>
-						</small>
+						</small> 
+						
 
 					</div>
+					<div id="remove">
+						<input type="submit" jsf:id="removerItem" value="X"
+							jsf:action="#{mBeanCarrinho.removerItem(item.produto.id)}" class="btn btn-danger" />
+					</div>
+
+
 
 				</ui:repeat>
 
@@ -89,10 +114,11 @@
 					<h:outputText value="#{mBeanCarrinho.valorTotal}"></h:outputText>
 				</div>
 
-
-				<input type="submit" jsf:id="salvarPedido"
+				<input type="submit" jsf:id="cancelarPedido" jsf:action="#{mBeanCarrinho.cancelarPedido}"
+					value="Cancelar Pedido" id="cancela" class="btn btn-danger" /> <input
+					type="submit" jsf:id="salvarPedido"
 					jsf:action="#{mBeanCarrinho.salvarPedido}" value="Salvar Pedido"
-					class="finaliza" />
+					id="finaliza" class="btn btn-success" />
 
 			</div>
 		</form>

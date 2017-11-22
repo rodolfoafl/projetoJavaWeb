@@ -35,6 +35,22 @@ public class MBeanCarrinho {
 		new PedidoDAO().salvar(p);
 		return "";
 	}
+	
+	public String cancelarPedido() {
+		itens.clear();
+		this.setValorTotal();
+		return "novaLista.jsf";
+	}
+	
+	public String removerItem(Integer idProduto) {
+		Produto produto = new ProdutoDAO().buscar(idProduto);
+		Item item = procuraItem(produto);
+		if(item != null) {
+			itens.remove(item);
+		}
+		this.setValorTotal();
+		return "novoCarrinho.jsf";
+	}
 
 	public String adicionarProduto(Integer idProduto) {
 
