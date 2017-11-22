@@ -1,9 +1,25 @@
 package projetoJavaWeb.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ITEM")
 public class Item {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	@ManyToOne
 	private Produto produto;
 	private Integer quantidade;
+	@ManyToOne
+	private Pedido pedido;
+	
 	
 	public Integer getId() {
 		return id;
@@ -22,6 +38,9 @@ public class Item {
 	}
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+	public void setPedido(Pedido p) {
+		this.pedido = p;
 	}
 	
 	

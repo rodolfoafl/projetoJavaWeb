@@ -76,8 +76,10 @@
 						<h:graphicImage value="ServletImagem?id=#{item.produto.id}"
 							styleClass="imagem" />
 						<b style="margin-left: 10%;"></b> <small style="margin-left: 15%;">Quantidade:
-						</small> <h:outputText value="#{item.quantidade}"></h:outputText> <small
-							style="margin-left: 10%;">Nome: <b><h:outputText value="#{item.produto.nome}"></h:outputText></b>
+						</small>
+						<h:outputText value="#{item.quantidade}"></h:outputText>
+						<small style="margin-left: 10%;">Nome: <b><h:outputText
+									value="#{item.produto.nome}"></h:outputText></b>
 						</small>
 
 
@@ -91,9 +93,11 @@
 					<p>R$ 1.378,00</p>
 				</div>
 
-				<a class="btn btn-success" id="finaliza" href="index.jsf">
-					Finalizar compra</a>
-			</div>
+
+				<input type="submit" jsf:id="salvarPedido"
+					jsf:action="#{mBeanCarrinho.salvarPedido}" value="Salvar Pedido" />
+
+		</div>
 		</form>
 
 	</ui:define>
