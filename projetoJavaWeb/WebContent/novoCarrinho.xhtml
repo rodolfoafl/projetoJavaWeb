@@ -10,12 +10,14 @@
 	<ui:define name="style">
 		<style>
 .carrinho {
-	height: 320px;
+	height: auto;
+	min-height: 500px;
 	width: 1000px;
 	margin-top: 2%;
 	margin-left: 20%;
 	position: absolute;
 	background-color: #C2C8CE;
+	overflow: auto;
 }
 
 .item {
@@ -29,16 +31,10 @@
 
 .imagem {
 	margin-left: 5%;
-	margin-top: 4px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 	height: 70px;
 	width: 90px;
-}
-
-.imagem2 {
-	margin-left: 5%;
-	margin-top: 4px;
-	height: 50px;
-	width: 70px;
 }
 
 .valorFinal {
@@ -52,7 +48,7 @@
 	text-align: center;
 }
 
-#finaliza {
+.finaliza {
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
@@ -75,13 +71,13 @@
 
 						<h:graphicImage value="ServletImagem?id=#{item.produto.id}"
 							styleClass="imagem" />
-						<b style="margin-left: 10%;"></b> <small style="margin-left: 15%;">Quantidade:
-						</small>
-						<h:outputText value="#{item.quantidade}"></h:outputText>
-						<small style="margin-left: 10%;">Nome: <b><h:outputText
+						<small style="margin-left: 15%;">Nome: <b><h:outputText
 									value="#{item.produto.nome}"></h:outputText></b>
+						</small> <small style="margin-left: 15%;">Quantidade: </small>
+						<h:outputText value="#{item.quantidade}"></h:outputText>
+						<small style="margin-left: 15%;">Valor: <b> R$<h:outputText
+									value="#{item.produto.valor}"></h:outputText></b>
 						</small>
-
 
 					</div>
 
@@ -89,15 +85,16 @@
 
 
 				<div class="valorFinal">
-					<b>TOTAL: </b>
-					<p>R$ 1.378,00</p>
+					<b>TOTAL: </b> R$
+					<h:outputText value="#{mBeanCarrinho.valorTotal}"></h:outputText>
 				</div>
 
 
 				<input type="submit" jsf:id="salvarPedido"
-					jsf:action="#{mBeanCarrinho.salvarPedido}" value="Salvar Pedido" />
+					jsf:action="#{mBeanCarrinho.salvarPedido}" value="Salvar Pedido"
+					class="finaliza" />
 
-		</div>
+			</div>
 		</form>
 
 	</ui:define>

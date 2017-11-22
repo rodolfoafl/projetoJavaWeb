@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -20,13 +21,13 @@ import projetoJavaWeb.entity.Produto;
 @SessionScoped
 public class MBeanCarrinho {
 	private ArrayList<Item> itens = new ArrayList<Item>();
-
-	@SuppressWarnings("deprecation")
+	
+	private BigDecimal valorTotal = BigDecimal.ZERO;
+	
 	public String salvarPedido() {
 		Pedido p = new Pedido();
-		p.setData(new Date(10, 10, 2010));
+		p.setDataCompra(Calendar.getInstance());
 		p.setItens(itens);
-		p.setValoFinal();
 		for (Item i : itens) {
 			i.setPedido(p);
 		}
@@ -47,6 +48,7 @@ public class MBeanCarrinho {
 		} else {
 			item.setQuantidade(item.getQuantidade() + 1);
 		}
+		this.setValorTotal();
 
 		return "novoCarrinho.jsf";
 	}
@@ -60,9 +62,24 @@ public class MBeanCarrinho {
 		return null;
 	}
 	
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+	
+	public void setValorTotal() {
+		valorTotal = BigDecimal.ZERO;
+		BigDecimal x = BigDecimal.ZERO;
+		for(Item i: itens) {
+			x = x.add(i.getValorTotal());
+		}
+		valorTotal = valorTotal.add(x);
+	}
+	
 	public ArrayList<Item> getItens() {
 		return itens;
 	}
+	
+	
 
 	public void setItens(ArrayList<Item> itens) {
 		this.itens = itens;
