@@ -58,9 +58,7 @@
 
 				<div class="form-group">
 					<label for="imagem">Imagem:</label>
-					<div id="divImagem">
-						<h:graphicImage value="ServletImagem?id=#{produto.id}"/>
-					</div>
+					<h:graphicImage value="ServletImagem?id=#{produto.id}" id="img" styleClass="imagem"/>
 					
 					<input jsf:id="imagemProduto" jsf:value="#{mBeanProduto.imagem}"
 						type="file" class="form-control" id="imagem" />
@@ -131,7 +129,6 @@
 		
 			function exibeImagem(){
 				alert("teste");
-			    $("#divImagem").addClass('imagem');
 			}
 			
 		</script>
