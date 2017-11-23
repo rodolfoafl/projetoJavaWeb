@@ -78,7 +78,7 @@ public class MBeanProduto {
 		this.nome = produto.getNome();
 		this.valor = produto.getValor();
 		this.descricao = produto.getDescricao();
-		return "novoDetalhes.jsf";
+		return "detalhesProduto.jsf";
 	}
 
 	/* Método que realiza consulta no banco de dados */

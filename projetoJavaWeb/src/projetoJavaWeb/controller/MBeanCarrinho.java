@@ -39,7 +39,7 @@ public class MBeanCarrinho {
 	public String cancelarPedido() {
 		itens.clear();
 		this.setValorTotal();
-		return "novaLista.jsf";
+		return "listaProdutos.jsf";
 	}
 	
 	public String removerItem(Integer idProduto) {
@@ -49,7 +49,7 @@ public class MBeanCarrinho {
 			itens.remove(item);
 		}
 		this.setValorTotal();
-		return "novoCarrinho.jsf";
+		return "carrinho.jsf";
 	}
 
 	public String adicionarProduto(Integer idProduto) {
@@ -66,7 +66,7 @@ public class MBeanCarrinho {
 		}
 		this.setValorTotal();
 
-		return "novoCarrinho.jsf";
+		return "carrinho.jsf";
 	}
 
 	public Item procuraItem(Produto produto) {

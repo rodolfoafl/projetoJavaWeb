@@ -23,8 +23,6 @@ public class Pedido {
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
 	private List<Item> itens;
 	
-//	private BigDecimal valoFinal = BigDecimal.ZERO;
-
 	public Integer getId() {
 		return id;
 	}
@@ -33,24 +31,6 @@ public class Pedido {
 		this.id = id;
 	}
 	
-	
-	
-//	public BigDecimal calculaValorFinal(Integer quantidade, BigDecimal valor) {
-//		valoFinal = valor.multiply(new BigDecimal(quantidade));
-//		valoFinal.add(valoFinal);
-//		return valoFinal;
-//	}
-//	
-//	public BigDecimal getValoFinal() {
-//		return valoFinal;
-//	}
-//
-//	public void setValoFinal() {
-//		for(Item i: itens) {
-//			valoFinal = calculaValorFinal(i.getQuantidade(), i.getProduto().getValor());
-//		}
-//	}
-
 	public Calendar getDataCompra() {
 		return dataCompra;
 	}

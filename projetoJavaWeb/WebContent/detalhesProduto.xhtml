@@ -75,6 +75,13 @@ small {
 	background-color: white;
 	font-size: 26px;
 }
+.bandeiras{
+	width: 80%;
+	height: 15%;
+	position: absolute;
+	bottom:30%;
+	right: 10%;
+}
 </style>
 	</ui:define>
 
@@ -103,12 +110,14 @@ small {
 							<b> à vista</b>
 						</p>
 						<p style="font-size: 18px;">em até 4x sem juros</p>
+						
+						<div>
+							<img src="img/bandeiras.png" class="bandeiras"/>
+						</div>
 
 						<input type="submit" jsf:id="detalhesProduto"
 							jsf:action="#{mBeanCarrinho.adicionarProduto(mBeanProduto.id)}"
-							value="Adicionar ao Carrinho" class="btn btn-primary"></input>
-
-
+							value="Adicionar ao Carrinho" class="btn btn-primary" style="position: absolute; bottom: 15%; right: 20%;"></input>
 					</div>
 				</div>
 
@@ -122,10 +131,6 @@ small {
 				</div>
 			</div>
 		</form>
-
-
-
-
 
 	</ui:define>
 </ui:composition>

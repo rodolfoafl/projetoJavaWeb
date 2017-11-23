@@ -33,6 +33,7 @@ public class ServletImagem extends HttpServlet {
 			fis.read(arrayImagem);
 			
 			response.getOutputStream().write(arrayImagem);
+			fis.close();
 		}
 	}
 
