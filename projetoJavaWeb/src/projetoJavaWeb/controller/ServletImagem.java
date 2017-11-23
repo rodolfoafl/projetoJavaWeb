@@ -18,23 +18,29 @@ import projetoJavaWeb.entity.Produto;
 @WebServlet("/ServletImagem")
 public class ServletImagem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public ServletImagem() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		Produto produto = new ProdutoDAO().buscar(Integer.parseInt(id));
-		if(produto != null) {
-			File f = new File(produto.getCaminhoImagem());
-			FileInputStream fis = new FileInputStream(f);
-			byte[] arrayImagem = new byte[(int) f.length()];
-			fis.read(arrayImagem);
-			
-			response.getOutputStream().write(arrayImagem);
-			fis.close();
+	public ServletImagem() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String id = "";
+		id = request.getParameter("id");
+		File f = null;
+		if (id.isEmpty()) {
+			f = new File("c:\\imagens\\default.png");
+		} else {
+			Produto produto = new ProdutoDAO().buscar(Integer.parseInt(id));
+			f = new File(produto.getCaminhoImagem());
 		}
+
+		FileInputStream fis = new FileInputStream(f);
+		byte[] arrayImagem = new byte[(int) f.length()];
+		fis.read(arrayImagem);
+
+		response.getOutputStream().write(arrayImagem);
+		fis.close();
 	}
 
 }
