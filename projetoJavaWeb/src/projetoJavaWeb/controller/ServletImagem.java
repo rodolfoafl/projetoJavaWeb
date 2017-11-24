@@ -15,7 +15,7 @@ import projetoJavaWeb.entity.Produto;
 /**
  * Servlet implementation class ServletImagem
  */
-@WebServlet("/ServletImagem")
+@WebServlet(urlPatterns={"/ServletImagem", "/admin/ServletImagem"})
 public class ServletImagem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

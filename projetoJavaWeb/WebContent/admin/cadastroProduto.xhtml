@@ -58,7 +58,7 @@
 
 				<div class="form-group">
 					<label for="imagem">Imagem:</label>
-					<h:graphicImage value="ServletImagem?id=#{produto.id}" id="img" styleClass="imagem"/>
+					<h:graphicImage value="/ServletImagem?id=#{produto.id}" id="img" styleClass="imagem"/>
 					
 					<input jsf:id="imagemProduto" jsf:value="#{mBeanProduto.imagem}"
 						type="file" class="form-control" id="imagem" />
