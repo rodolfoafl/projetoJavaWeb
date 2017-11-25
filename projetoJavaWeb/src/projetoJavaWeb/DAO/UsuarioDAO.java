@@ -51,4 +51,19 @@ public class UsuarioDAO {
 		em.getTransaction().commit();
 	}
 
+	public Usuario buscarUsuario(String login, String senha) {
+		Query q = em.createQuery("select u from Usuario u "
+				+ "where u.login = :login and u.senha = :senha "
+				+ "and u.tipo = :tipo");
+		q.setParameter("login", login);
+		q.setParameter("senha", senha);
+		q.setParameter("tipo", 0); //1 -> administrador
+		
+		try {
+			return (Usuario) q.getSingleResult();
+		} catch (Exception ex) {
+			return null;
+		}
+	}
+
 }

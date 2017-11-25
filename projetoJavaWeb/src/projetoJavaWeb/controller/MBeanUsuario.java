@@ -14,32 +14,32 @@ public class MBeanUsuario {
 	private String login;
 	private String senha;
 	private Integer tipo;
-	
-	public String autenticacao() {
-		
-		//procuro pelo usuario no banco de dados
-		Usuario usuario = new UsuarioDAO().buscar(login, senha);
-				
-		//se o usuário for null ou melhor não for encontrado
-		//envio uma mensagem para tela avisando
+
+	public String autenticacao(Integer tipo) {
+		Usuario usuario;
+		if (tipo == 1) {
+			// procuro pelo usuario no banco de dados
+			usuario = new UsuarioDAO().buscar(login, senha);
+		}else {
+			usuario = new UsuarioDAO().buscarUsuario(login, senha);
+		}
+		// se o usuário for null ou melhor não for encontrado
+		// envio uma mensagem para tela avisando
 		if (usuario == null) {
-			FacesContext.getCurrentInstance().
-				addMessage("", 
-			new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-					"Login ou senha inválidos!", ""));
+			FacesContext.getCurrentInstance().addMessage("",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login ou senha inválidos!", ""));
 			return "";
-		}	
-		
-		//capture o objeto de request
-		//nele é possível recuperar a sessão		
-		HttpServletRequest req = (HttpServletRequest) 
-				FacesContext.getCurrentInstance().
-				getExternalContext().getRequest();
-		//adiciono na sessão o usuário que fez o login
+		}
+
+		// capture o objeto de request
+		// nele é possível recuperar a sessão
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		// adiciono na sessão o usuário que fez o login
 		req.getSession().setAttribute("usuario", usuario);
-		
-		//redireciono para tela que ele estava tentando acessar
-		return ""+req.getSession().getAttribute("pagina");
+
+		// redireciono para tela que ele estava tentando acessar
+		return "" + req.getSession().getAttribute("pagina");
 	}
 
 	public String getLogin() {
@@ -65,7 +65,5 @@ public class MBeanUsuario {
 	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
-	
-	
 
 }
