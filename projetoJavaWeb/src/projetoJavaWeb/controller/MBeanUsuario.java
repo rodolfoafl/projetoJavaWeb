@@ -14,15 +14,28 @@ public class MBeanUsuario {
 	private String login;
 	private String senha;
 	private Integer tipo;
+	private Integer id;
+	
+	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String autenticacao(Integer tipo) {
+
 		Usuario usuario;
+
 		if (tipo == 1) {
-			// procuro pelo usuario no banco de dados
 			usuario = new UsuarioDAO().buscar(login, senha);
 		}else {
 			usuario = new UsuarioDAO().buscarUsuario(login, senha);
 		}
+
 		// se o usuário for null ou melhor não for encontrado
 		// envio uma mensagem para tela avisando
 		if (usuario == null) {

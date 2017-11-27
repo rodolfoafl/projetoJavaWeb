@@ -2,6 +2,7 @@ package projetoJavaWeb.controller;
 
 import java.io.IOException;
 
+import javax.faces.context.FacesContext;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -37,9 +38,8 @@ public class LoginUsuarioFilter implements Filter {
 		//neste ponto adiciono qual tela o usuário tentava acessar
 		if (u == null ) {
 			req.getSession().setAttribute("pagina", "carrinho.jsf");
-			res.sendRedirect("login.jsf");
+			res.sendRedirect("loginUsuario.jsf");
 		}
-		
 	}
 
 	@Override

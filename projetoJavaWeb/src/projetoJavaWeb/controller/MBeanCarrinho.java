@@ -1,5 +1,6 @@
 package projetoJavaWeb.controller;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Date;
@@ -10,12 +11,15 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import projetoJavaWeb.DAO.PedidoDAO;
 import projetoJavaWeb.DAO.ProdutoDAO;
 import projetoJavaWeb.entity.Item;
 import projetoJavaWeb.entity.Pedido;
 import projetoJavaWeb.entity.Produto;
+import projetoJavaWeb.entity.Usuario;
 
 @ManagedBean(name = "mBeanCarrinho")
 @SessionScoped
@@ -25,6 +29,10 @@ public class MBeanCarrinho {
 	private BigDecimal valorTotal = BigDecimal.ZERO;
 	
 	public String salvarPedido() {
+		
+		HttpServletRequest req = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		Usuario u = (Usuario) req.getSession().getAttribute("usuario");
+		
 		Pedido p = new Pedido();
 		p.setDataCompra(Calendar.getInstance());
 		p.setItens(itens);
@@ -33,7 +41,7 @@ public class MBeanCarrinho {
 		}
 
 		new PedidoDAO().salvar(p);
-		return "";
+		return "index.jsf";
 	}
 	
 	public String cancelarPedido() {
@@ -52,7 +60,7 @@ public class MBeanCarrinho {
 		return "carrinho.jsf";
 	}
 
-	public String adicionarProduto(Integer idProduto) {
+	public void adicionarProduto(Integer idProduto) throws IOException {
 
 		Produto produto = new ProdutoDAO().buscar(idProduto);
 		Item item = procuraItem(produto);
@@ -66,7 +74,8 @@ public class MBeanCarrinho {
 		}
 		this.setValorTotal();
 
-		return "carrinho.jsf";
+		FacesContext.getCurrentInstance().getExternalContext().redirect("carrinho.jsf");	
+//		return "carrinho.jsf";
 	}
 
 	public Item procuraItem(Produto produto) {

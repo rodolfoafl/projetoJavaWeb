@@ -2,10 +2,12 @@ package projetoJavaWeb.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import org.apache.catalina.core.ApplicationPart;
 
@@ -73,11 +75,12 @@ public class MBeanProduto {
 		this.descricao = produto.getDescricao();
 	}
 	
-	public String carregarProduto(Produto produto) {
+	public String carregarProduto(Produto produto){
 		this.id = produto.getId();
 		this.nome = produto.getNome();
 		this.valor = produto.getValor();
 		this.descricao = produto.getDescricao();
+		
 		return "detalhesProduto.jsf";
 	}
 

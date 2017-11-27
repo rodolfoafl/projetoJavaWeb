@@ -84,6 +84,8 @@
 		<form jsf:id="form" method="post">
 			<div class="carrinho">
 				<ui:repeat var="item" value="#{mBeanCarrinho.itens}">
+				
+				<input type="hidden" jsf:id="idUsuario" jsf:value="#{mBeanUsuario.id}"/>
 
 					<div class="item">
 
