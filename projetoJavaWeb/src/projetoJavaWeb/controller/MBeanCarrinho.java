@@ -36,11 +36,14 @@ public class MBeanCarrinho {
 		Pedido p = new Pedido();
 		p.setDataCompra(Calendar.getInstance());
 		p.setItens(itens);
+		p.setUsuario(u);
 		for (Item i : itens) {
 			i.setPedido(p);
 		}
-
+		
+		
 		new PedidoDAO().salvar(p);
+		itens.clear();
 		return "index.jsf";
 	}
 	
@@ -60,7 +63,7 @@ public class MBeanCarrinho {
 		return "carrinho.jsf";
 	}
 
-	public void adicionarProduto(Integer idProduto) throws IOException {
+	public String adicionarProduto(Integer idProduto) throws IOException {
 
 		Produto produto = new ProdutoDAO().buscar(idProduto);
 		Item item = procuraItem(produto);
@@ -74,8 +77,8 @@ public class MBeanCarrinho {
 		}
 		this.setValorTotal();
 
-		FacesContext.getCurrentInstance().getExternalContext().redirect("carrinho.jsf");	
-//		return "carrinho.jsf";
+		//FacesContext.getCurrentInstance().getExternalContext().redirect("carrinho.jsf");	
+		return "carrinho.jsf";
 	}
 
 	public Item procuraItem(Produto produto) {

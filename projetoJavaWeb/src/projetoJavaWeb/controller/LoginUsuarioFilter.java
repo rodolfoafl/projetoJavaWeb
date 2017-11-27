@@ -18,7 +18,7 @@ import projetoJavaWeb.entity.Usuario;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/carrinho.jsf")
+@WebFilter("/listaProdutos.jsf")
 public class LoginUsuarioFilter implements Filter {
 	@Override
 	public void destroy() {	
@@ -37,9 +37,11 @@ public class LoginUsuarioFilter implements Filter {
 		//caso seja nulo redireciono para a tela de login
 		//neste ponto adiciono qual tela o usuário tentava acessar
 		if (u == null ) {
-			req.getSession().setAttribute("pagina", "carrinho.jsf");
+			req.getSession().setAttribute("pagina", "listaProdutos.jsf");
 			res.sendRedirect("loginUsuario.jsf");
 		}
+		arg2.doFilter(req, res);
+		
 	}
 
 	@Override
