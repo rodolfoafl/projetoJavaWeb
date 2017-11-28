@@ -35,10 +35,11 @@ public class LoginFilter implements Filter {
 		
 		//caso seja nulo redireciono para a tela de login
 		//neste ponto adiciono qual tela o usuário tentava acessar
-		if (u == null) {
+		if (u == null || u.getTipo() != 1) {
 			req.getSession().setAttribute("pagina", "index.jsf");
 			res.sendRedirect("login.jsf");
 		}
+		arg2.doFilter(req, res);
 		
 	}
 
