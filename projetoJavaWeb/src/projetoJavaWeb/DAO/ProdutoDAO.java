@@ -2,6 +2,7 @@ package projetoJavaWeb.DAO;
 
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -21,16 +22,18 @@ public class ProdutoDAO {
 		em.merge(produto);
 		em.getTransaction().commit();
 	}
-	
+
 	public void excluir(Produto produto) {
 		em.getTransaction().begin();
 		Produto p = em.find(Produto.class, produto.getId());
-		if (p != null) {
+		try {
 			em.remove(p);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		em.getTransaction().commit();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Produto> consultar() {
 		Query q = em.createQuery("FROM Produto");

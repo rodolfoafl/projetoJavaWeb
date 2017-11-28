@@ -21,6 +21,8 @@ public class Produto {
 	private BigDecimal valor;
 	private String descricao;
 	private String caminhoImagem;
+	
+	private boolean pedido;
 
 	public Integer getId() {
 		return id;
@@ -60,6 +62,14 @@ public class Produto {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public boolean isPedido() {
+		return pedido;
+	}
+
+	public void setPedido(boolean pedido) {
+		this.pedido = pedido;
 	}
 
 }

@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 
 import projetoJavaWeb.DAO.ClienteDAO;
 import projetoJavaWeb.entity.Cliente;
+import projetoJavaWeb.entity.Usuario;
 
 @ManagedBean(name = "mBeanCliente")
 public class MBeanCliente {

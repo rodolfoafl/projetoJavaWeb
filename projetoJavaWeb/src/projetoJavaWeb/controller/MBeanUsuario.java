@@ -16,8 +16,6 @@ public class MBeanUsuario {
 	private Integer tipo;
 	private Integer id;
 	
-	
-
 	public Integer getId() {
 		return id;
 	}

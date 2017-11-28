@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
@@ -26,6 +27,8 @@ public class MBeanProduto {
 	// private Integer tipo;
 	private BigDecimal valor;
 	private String descricao;
+	
+	
 
 	private ApplicationPart imagem;
 
@@ -54,6 +57,7 @@ public class MBeanProduto {
 		p.setValor(valor);
 		p.setCaminhoImagem(caminhoImagem);
 		p.setDescricao(descricao);
+		p.setPedido(false);
 
 		if (id == null) {
 			pDAO.salvar(p);
@@ -64,7 +68,13 @@ public class MBeanProduto {
 
 	/* Método para excluir um produto do banco de dados */
 	public void excluir(Produto produto) {
-		pDAO.excluir(produto);
+		try {
+			pDAO.excluir(produto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			FacesContext.getCurrentInstance().addMessage("",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Não é possível excluir o produto!", ""));
+		}
 	}
 
 	/* Método para */
@@ -132,5 +142,6 @@ public class MBeanProduto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 
 }

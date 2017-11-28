@@ -39,6 +39,7 @@ public class MBeanCarrinho {
 		p.setUsuario(u);
 		for (Item i : itens) {
 			i.setPedido(p);
+			i.getProduto().setPedido(true);
 		}
 		
 		
