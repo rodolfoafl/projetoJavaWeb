@@ -2,15 +2,17 @@ package projetoJavaWeb.DAO;
 
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
 
 import projetoJavaWeb.entity.Cliente;
+import projetoJavaWeb.entity.Pedido;
 import projetoJavaWeb.entity.Usuario;
 
 public class ClienteDAO {
 	EntityManager em = Conexao.getInstance().createEntityManager();
-
 
 	public void salvar(Cliente cliente) {
 		em.getTransaction().begin();
@@ -39,18 +41,15 @@ public class ClienteDAO {
 		return (List<Cliente>) q.getResultList();
 	}
 
-
 	public Cliente buscar(String email, String senha) {
-		Query q = em.createQuery("select c from Cliente c "
-				+ "where c.email = :email and c.senha = :senha");
+		Query q = em.createQuery("select c from Cliente c " + "where c.email = :email and c.senha = :senha");
 		q.setParameter("email", email);
 		q.setParameter("senha", senha);
-		
+
 		try {
 			return (Cliente) q.getSingleResult();
 		} catch (Exception ex) {
 			return null;
-		}	
-	}	
-
+		}
+	}
 }

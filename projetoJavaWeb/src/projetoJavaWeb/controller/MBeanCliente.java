@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import projetoJavaWeb.DAO.ClienteDAO;
 import projetoJavaWeb.DAO.UsuarioDAO;
 import projetoJavaWeb.entity.Cliente;
+import projetoJavaWeb.entity.Pedido;
 import projetoJavaWeb.entity.Usuario;
 
 @ManagedBean(name = "mBeanCliente")
@@ -97,7 +98,7 @@ public class MBeanCliente {
 	public List<Cliente> getClientes() {
 		return cDAO.consultar();
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -112,10 +113,6 @@ public class MBeanCliente {
 
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
-	}
-
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
 	}
 
 	public String getNome() {
@@ -172,6 +169,11 @@ public class MBeanCliente {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
 	}
 
 }

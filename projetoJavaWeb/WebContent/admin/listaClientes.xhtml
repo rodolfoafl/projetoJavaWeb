@@ -20,9 +20,7 @@
 					<th>Endereço do Cliente</th>
 					<th>CEP do Cliente</th>
 					<th>Telefone do Cliente</th>
-					<th>Data do cadastro</th>
 					<th>Nome de usuário</th>
-					<!-- <th>Ações</th> -->
 
 				</tr>
 
@@ -33,18 +31,14 @@
 						<td>#{cliente.endereco}</td>
 						<td>#{cliente.cep}</td>
 						<td>#{cliente.telefone}</td>
-						<td>#{cliente.dataCadastro}</td>
-			<!-- 			<td>
-							<button jsf:id="btnTeste"
-								jsf:action="#{mBeanCliente.excluir(cliente)}" type="submit"
-								class="btn btn-danger"
-								onclick="if(!confirm('Tem certeza que deseja excluir?')) {return false;}">Excluir</button>
-							<button jsf:id="btnEdt"
-								jsf:action="#{mBeanCliente.alterar(cliente)}" type="submit"
-								class="btn btn-danger" style="margin-left: 2px;">Editar</button>
-						</td> -->
+						<td>#{cliente.email}</td>
 
 					</tr>
+					<ui:repeat var="pedido" value="#{mBeanCliente.pedidos}">
+					<tr>
+						<td>#{pedido.id}</td>
+					</tr>
+					</ui:repeat>
 				</ui:repeat>
 
 			</table>

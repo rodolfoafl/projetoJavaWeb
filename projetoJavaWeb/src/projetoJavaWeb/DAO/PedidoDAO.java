@@ -2,9 +2,12 @@ package projetoJavaWeb.DAO;
 
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
 
+import projetoJavaWeb.entity.Cliente;
 import projetoJavaWeb.entity.Pedido;
 
 public class PedidoDAO {
@@ -42,4 +45,5 @@ public class PedidoDAO {
 		Pedido pedido = em.find(Pedido.class, id);
 		return pedido;
 	}
+	
 }
