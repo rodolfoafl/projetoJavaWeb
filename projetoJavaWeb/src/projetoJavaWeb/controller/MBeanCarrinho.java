@@ -27,6 +27,8 @@ import projetoJavaWeb.entity.Usuario;
 public class MBeanCarrinho {
 	private ArrayList<Item> itens = new ArrayList<Item>();
 	
+	private static ArrayList<Pedido> pedidosCliente = new ArrayList<>();
+	
 	private BigDecimal valorTotal = BigDecimal.ZERO;
 	
 	public String salvarPedido() {
@@ -42,11 +44,14 @@ public class MBeanCarrinho {
 			i.setPedido(p);
 		}
 		
+		pedidosCliente.add(p);
 		
 		new PedidoDAO().salvar(p);
 		itens.clear();
 		return "index.jsf";
 	}
+	
+	
 	
 	public String cancelarPedido() {
 		itens.clear();
@@ -113,4 +118,18 @@ public class MBeanCarrinho {
 	public void setItens(ArrayList<Item> itens) {
 		this.itens = itens;
 	}
+
+
+
+	public ArrayList<Pedido> getPedidosCliente() {
+		return pedidosCliente;
+	}
+
+
+
+	public void setPedidosCliente(ArrayList<Pedido> pedidosCliente) {
+		MBeanCarrinho.pedidosCliente = pedidosCliente;
+	}
+
+	
 }

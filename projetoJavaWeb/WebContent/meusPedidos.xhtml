@@ -13,26 +13,18 @@
 		<h:form>
 			<table class="table table-bordered"
 				style="width: 80%; margin-left: 10%;">
-
-	<!-- 			<tr>
-					<th>Pedido</th>
+				<tr>
+					<th>Nº pedido</th>
+					<th>Data de compra</th>
 				</tr>
-				<ui:repeat var="pedido" value="#{mBeanCliente.pedidos}">
+
+				<ui:repeat var="pedido" value="#{mBeanCarrinho.pedidosCliente}">
 					<tr style="width: 80%;">
 						<td>#{pedido.id}</td>
+						<td>#{pedido.dataCompra}</td>
 					</tr>
 				</ui:repeat>
 
-				<tr>
-					<th>Itens</th>
-					<th>Quantidade</th>
-				</tr>
-				<ui:repeat var="item" value="#{mBeanCliente.itens}">
-					<tr style="width: 80%;">
-						<td>#{item.id}</td>
-						<td>#{item.quantidade}</td>
-					</tr>
-				</ui:repeat> -->
 
 			</table>
 		</h:form>

@@ -56,7 +56,6 @@ public class MBeanProduto {
 		p.setValor(valor);
 		p.setCaminhoImagem(caminhoImagem);
 		p.setDescricao(descricao);
-		p.setCategoria(caminhoImagem);
 		p.setCategoria(categoria);
 
 		if (id == null) {
