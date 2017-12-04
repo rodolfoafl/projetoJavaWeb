@@ -3,21 +3,22 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="template.xhtml">
 
-<ui:define name="style">
-	<style>
-		.imagem {
-			height: 150px;
-			width: 267px;
-			margin-top: 20px;
-			margin-bottom: 20px;
-			margin-left: 20px;
-		}
-	</style>
-</ui:define>
+	<ui:define name="style">
+		<style>
+.imagem {
+	height: 150px;
+	width: 267px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+</style>
+	</ui:define>
 
 
 	<ui:define name="conteudo">
@@ -39,27 +40,28 @@
 				</div>
 
 				<div class="form-group">
-					<label for="tipo">Tipo:</label> <select class="custom-select"
-						id="tipo">
-						<option selected="" />
-						<option value="1">Console</option>
-						<option value="2">Acessório</option>
-						<option value="3">Jogo</option>
-					</select>
-				</div>
-
-				<div class="form-group">
 					<label for="valor">Valor:</label> <input jsf:id="valorProduto"
 						jsf:value="#{mBeanProduto.valor}" type="text" class="form-control"
 						id="valor" placeholder="Informe o valor" required="required">
 					<f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber>
 					</input>
 				</div>
+				
+					<div class="form-group">
+						<label for="categoria">Categoria:</label>
+						<h:selectOneMenu class="form-control" id="selecttipo"
+							value="#{mBeanProduto.categoria}">
+							<f:selectItem itemValue="Consoles" itemLabel="Consoles" />
+							<f:selectItem itemValue="Acessórios" itemLabel="Acessórios" />
+							<f:selectItem itemValue="Jogos" itemLabel="Jogos" />
+						</h:selectOneMenu>
+					</div>
 
 				<div class="form-group">
 					<label for="imagem">Imagem:</label>
-					<h:graphicImage value="/ServletImagem?id=#{produto.id}" id="img" styleClass="imagem"/>
-					
+					<h:graphicImage value="/ServletImagem?id=#{produto.id}" id="img"
+						styleClass="imagem" />
+
 					<input jsf:id="imagemProduto" jsf:value="#{mBeanProduto.imagem}"
 						type="file" class="form-control" id="imagem" />
 				</div>
@@ -84,26 +86,25 @@
 		</div>
 
 		<h:form>
-			<h:messages style="width: 50%; margin-left: 25%; text-align: center;" styleClass="alert alert-danger">
-				</h:messages>
-		
+			<h:messages style="width: 50%; margin-left: 25%; text-align: center;"
+				styleClass="alert alert-danger">
+			</h:messages>
+
 			<table class="table table-bordered"
 				style="width: 80%; margin-left: 10%;">
 
 				<tr>
-					<th>Código do Produto</th>
-					<th>Nome do Produto</th>
-					<!-- <th>Tipo do Produto</th> -->
-					<th>Valor do Produto</th>
-					<th>Imagem do Produto</th>
+					<th>Nome</th>
+					<th>Categoria</th>
+					<th>Valor</th>
+					<th>Imagem</th>
 					<th>Ações</th>
-					<!-- 	<th>Descricao</th> -->
 				</tr>
 
 				<ui:repeat var="produto" value="#{mBeanProduto.produtos}">
 					<tr style="width: 80%;">
-						<td>1</td>
 						<td>#{produto.nome}</td>
+						<td>#{produto.categoria}</td>
 						<td>R$ #{produto.valor}</td>
 						<td><h:graphicImage value="ServletImagem?id=#{produto.id}"
 								width="50px;" height="50px;" /></td>
@@ -114,7 +115,7 @@
 								onclick="if(!confirm('Tem certeza que deseja excluir?')) {return false;}">Excluir</button>
 							<button jsf:id="btnEdt"
 								jsf:action="#{mBeanProduto.alterar(produto)}" type="submit"
-								class="btn btn-danger" style="margin-left: 2px;" onclick="javascript: exibeImagem();">Editar</button>
+								class="btn btn-danger" style="margin-left: 2px;">Editar</button>
 						</td>
 					</tr>
 				</ui:repeat>
@@ -129,11 +130,6 @@
 			$('#valor').mask('0.000,00', {
 				reverse : true
 			});
-		
-			function exibeImagem(){
-				alert("teste");
-			}
-			
 		</script>
 
 	</ui:define>

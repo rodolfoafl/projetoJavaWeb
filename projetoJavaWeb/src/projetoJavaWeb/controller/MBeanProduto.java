@@ -2,7 +2,6 @@ package projetoJavaWeb.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -13,6 +12,7 @@ import javax.faces.context.FacesContext;
 import org.apache.catalina.core.ApplicationPart;
 
 import projetoJavaWeb.DAO.ProdutoDAO;
+import projetoJavaWeb.entity.Categoria;
 import projetoJavaWeb.entity.Produto;
 
 @ManagedBean(name = "mBeanProduto")
@@ -24,12 +24,11 @@ public class MBeanProduto {
 
 	private Integer id;
 	private String nome;
-	// private Integer tipo;
 	private BigDecimal valor;
 	private String descricao;
 	
+	private String categoria;
 	
-
 	private ApplicationPart imagem;
 
 	/* Método para salvar um produto no banco de dados */
@@ -57,7 +56,8 @@ public class MBeanProduto {
 		p.setValor(valor);
 		p.setCaminhoImagem(caminhoImagem);
 		p.setDescricao(descricao);
-		p.setPedido(false);
+		p.setCategoria(caminhoImagem);
+		p.setCategoria(categoria);
 
 		if (id == null) {
 			pDAO.salvar(p);
@@ -83,6 +83,7 @@ public class MBeanProduto {
 		this.nome = produto.getNome();
 		this.valor = produto.getValor();
 		this.descricao = produto.getDescricao();
+		this.categoria = produto.getCategoria();
 	}
 	
 	public String carregarProduto(Produto produto){
@@ -90,6 +91,7 @@ public class MBeanProduto {
 		this.nome = produto.getNome();
 		this.valor = produto.getValor();
 		this.descricao = produto.getDescricao();
+		this.categoria = produto.getCategoria();
 		
 		return "detalhesProduto.jsf";
 	}
@@ -103,6 +105,14 @@ public class MBeanProduto {
 		this.produtos = produtos;
 	}
 
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+	
 	public ApplicationPart getImagem() {
 		return imagem;
 	}
@@ -142,6 +152,4 @@ public class MBeanProduto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-
 }

@@ -15,12 +15,6 @@ public class Usuario {
 	private Integer id;
 	private String login;
 	private String senha;
-	/*
-	 * Tipo será usada para definir o tipo de usuário
-	 * 0 -> cliente 
-	 * 1 -> administrador
-	 */
-	private Integer tipo;
 
 	public Integer getId() {
 		return id;
@@ -44,13 +38,5 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public Integer getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
 	}
 }

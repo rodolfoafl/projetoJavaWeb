@@ -16,14 +16,14 @@
 				<h:messages styleClass="alert alert-danger">
 				</h:messages>
 
-				<h2 class="form-signin-heading">Login Usuário</h2>
-				<label for="login" class="sr-only">Login</label> <input type="text"
-					jsf:id="login" jsf:value="#{mBeanUsuario.login}"
+				<h2 class="form-signin-heading">Login Cliente</h2>
+				<label for="login" class="sr-only">Login</label> <input type="email"
+					jsf:id="login" jsf:value="#{mBeanCliente.email}"
 					class="form-control" placeholder="Login" /> <label for="senha"
 					class="sr-only">Senha</label> <input type="password" jsf:id="senha"
-					jsf:value="#{mBeanUsuario.senha}" class="form-control" placeholder="Senha"/> <input
+					jsf:value="#{mBeanCliente.senha}" class="form-control" placeholder="Senha"/> <input
 					type="submit" jsf:id="logar"
-					jsf:action="#{mBeanUsuario.autenticacao(0)}"
+					jsf:action="#{mBeanCliente.login}"
 					class="btn btn-lg btn-primary btn-block" value="Logar" />
 
 			</div>

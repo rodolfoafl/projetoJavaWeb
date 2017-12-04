@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import projetoJavaWeb.DAO.ClienteDAO;
+import projetoJavaWeb.DAO.UsuarioDAO;
 import projetoJavaWeb.entity.Cliente;
 import projetoJavaWeb.entity.Usuario;
 
@@ -23,6 +27,33 @@ public class MBeanCliente {
 	private String endereco;
 	private String cep;
 	private String telefone;
+	
+	private String email;
+	private String senha;
+	
+	public String login() {
+
+		Cliente c = new ClienteDAO().buscar(email, senha);
+
+		// se o usuário for null ou melhor não for encontrado
+		// envio uma mensagem para tela avisando
+		if (c == null) {
+			FacesContext.getCurrentInstance().addMessage("",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login ou senha inválidos!", ""));
+			return "";
+		}
+
+		// capture o objeto de request
+		// nele é possível recuperar a sessão
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		// adiciono na sessão o usuário que fez o login
+		req.getSession().setAttribute("cliente", c);
+
+		// redireciono para tela que ele estava tentando acessar
+		return "" + req.getSession().getAttribute("pagina");
+	}
+	
 
 	/* Método para salvar um cliente no banco de dados */
 	public void salvar() {
@@ -34,6 +65,8 @@ public class MBeanCliente {
 		c.setEndereco(endereco);
 		c.setCep(cep);
 		c.setTelefone(telefone);
+		c.setEmail(email);
+		c.setSenha(senha);
 
 		if (id == null) {
 			cDAO.salvar(c);
@@ -56,6 +89,8 @@ public class MBeanCliente {
 		this.endereco = cliente.getEndereco();
 		this.cep = cliente.getCep();
 		this.telefone = cliente.getTelefone();
+		this.email = cliente.getEmail();
+		this.senha = cliente.getSenha();
 	}
 
 	/* Método que realiza consulta no banco de dados */
@@ -121,6 +156,22 @@ public class MBeanCliente {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }

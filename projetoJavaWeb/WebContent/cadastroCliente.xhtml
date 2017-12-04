@@ -62,6 +62,20 @@
 						placeholder="Informe o telefone" required="required"/>
 				</div>
 				
+				<div class="form-group">
+					<label for="email">Email:</label> <input
+						jsf:id="emailCliente" jsf:value="#{mBeanCliente.email}"
+						type="email" class="form-control" id="email"
+						placeholder="Informe o email" required="required"/>
+				</div>
+				
+				<div class="form-group">
+					<label for="telefone">Senha:</label> <input
+						jsf:id="senhaCliente" jsf:value="#{mBeanCliente.senha}"
+						type="password" class="form-control" id="senha"
+						placeholder="Informe a senha" required="required"/>
+				</div>
+				
 				<div style="text-align: center;">
 					<button jsf:id="btnSalvar" jsf:action="#{mBeanCliente.salvar}"
 						type="submit" class="btn btn-primary" style="margin-bottom: 5px;">

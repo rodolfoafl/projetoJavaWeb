@@ -13,7 +13,6 @@ public class MBeanUsuario {
 
 	private String login;
 	private String senha;
-	private Integer tipo;
 	private Integer id;
 	
 	public Integer getId() {
@@ -24,18 +23,9 @@ public class MBeanUsuario {
 		this.id = id;
 	}
 
-	public String autenticacao(Integer tipo) {
+	public String autenticacao() {
 
-		Usuario usuario;
-
-		if (tipo == 1) {
-			usuario = new UsuarioDAO().buscar(login, senha);
-		}else {
-			usuario = new UsuarioDAO().buscarUsuario(login, senha);
-		}
-
-		// se o usuário for null ou melhor não for encontrado
-		// envio uma mensagem para tela avisando
+		Usuario usuario = new UsuarioDAO().buscar(login, senha);
 		if (usuario == null) {
 			FacesContext.getCurrentInstance().addMessage("",
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login ou senha inválidos!", ""));
@@ -67,14 +57,6 @@ public class MBeanUsuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public Integer getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
 	}
 
 }

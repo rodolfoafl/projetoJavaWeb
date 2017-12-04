@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import projetoJavaWeb.entity.Cliente;
 import projetoJavaWeb.entity.Usuario;
 
 /**
@@ -31,12 +32,11 @@ public class LoginUsuarioFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse)arg1;
 		
 		//tento capturar o usuário da sessão
-		Usuario u = (Usuario) req.getSession().
-				getAttribute("usuario");
+		Cliente c = (Cliente)req.getSession().getAttribute("cliente");
 		
 		//caso seja nulo redireciono para a tela de login
-		//neste ponto adiciono qual tela o usuário tentava acessar
-		if (u == null || u.getTipo() != 0) {
+		//neste ponto adiciono qual tela o usuário tentava acessar		
+		if (c == null) {
 			req.getSession().setAttribute("pagina", "listaProdutos.jsf");
 			res.sendRedirect("loginUsuario.jsf");
 		}

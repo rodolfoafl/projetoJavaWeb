@@ -22,7 +22,7 @@ public class Pedido {
 	private Integer id;
 	private Calendar dataCompra;
 	@ManyToOne
-	private Usuario usuario;
+	private Cliente cliente;
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
 	private List<Item> itens;
 	
@@ -42,14 +42,6 @@ public class Pedido {
 		this.dataCompra = dataCompra;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public List<Item> getItens() {
 		return itens;
 	}
@@ -57,5 +49,15 @@ public class Pedido {
 	public void setItens(List<Item> itens) {
 		this.itens = itens;
 	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	
 
 }

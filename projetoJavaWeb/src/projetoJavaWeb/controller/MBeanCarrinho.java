@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import projetoJavaWeb.DAO.PedidoDAO;
 import projetoJavaWeb.DAO.ProdutoDAO;
+import projetoJavaWeb.entity.Cliente;
 import projetoJavaWeb.entity.Item;
 import projetoJavaWeb.entity.Pedido;
 import projetoJavaWeb.entity.Produto;
@@ -31,15 +32,14 @@ public class MBeanCarrinho {
 	public String salvarPedido() {
 		
 		HttpServletRequest req = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		Usuario u = (Usuario) req.getSession().getAttribute("usuario");
+		Cliente c = (Cliente) req.getSession().getAttribute("cliente");
 		
 		Pedido p = new Pedido();
 		p.setDataCompra(Calendar.getInstance());
 		p.setItens(itens);
-		p.setUsuario(u);
+		p.setCliente(c);
 		for (Item i : itens) {
 			i.setPedido(p);
-			i.getProduto().setPedido(true);
 		}
 		
 		
