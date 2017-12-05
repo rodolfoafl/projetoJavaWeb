@@ -9,20 +9,20 @@
 
 	<ui:define name="conteudo">
 
-
+		<div style="height: auto; background-color: white; width: 60%; margin-left: 20%;">
 		<h:form>
 			<f:event listener="#{mBeanCarrinho.buscarPedidosCliente}"
 				type="preRenderView" />
 			<ui:repeat var="pedido" value="#{mBeanCarrinho.pedidosCliente}">
 				<table class="table table-bordered"
-					style="width: 60%; margin-left: 20%; padding: 0;">
+					style="width: 90%; margin-left: 5%; padding: 0;">
 					<tr>
 						<th>Nº pedido</th>
 						<th>Data</th>
 					</tr>
 
 
-					<tr style="width: 60%;">
+					<tr style="width: 90%;">
 						<td>#{pedido.id}</td>
 						<td><h:outputText value="#{pedido.dataCompra}">
 								<f:convertDateTime pattern="dd-MM-yyy HH:mm:ss" timeZone="GMT-3"></f:convertDateTime>
@@ -30,7 +30,7 @@
 					</tr>
 					</table>
 					<table class="table table-bordered"
-						style="width: 60%; margin-left: 20%; padding: 0;">
+						style="width: 90%; margin-left: 5%; padding: 0;">
 						<tr>
 							<th scope="col">Produto</th>
 							<th scope="col">Quantidade</th>
@@ -49,6 +49,8 @@
 
 			</ui:repeat>
 		</h:form>
+		</div>
+		
 	</ui:define>
 
 	<ui:define name="script">
