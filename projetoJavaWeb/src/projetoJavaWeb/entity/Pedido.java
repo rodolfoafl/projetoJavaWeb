@@ -2,6 +2,7 @@ package projetoJavaWeb.entity;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "PEDIDO")
@@ -20,7 +23,7 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private Calendar dataCompra;
+	private Date dataCompra;
 	@ManyToOne
 	private Cliente cliente;
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
@@ -34,11 +37,11 @@ public class Pedido {
 		this.id = id;
 	}
 	
-	public Calendar getDataCompra() {
+	public Date getDataCompra() {
 		return dataCompra;
 	}
 
-	public void setDataCompra(Calendar dataCompra) {
+	public void setDataCompra(Date dataCompra) {
 		this.dataCompra = dataCompra;
 	}
 

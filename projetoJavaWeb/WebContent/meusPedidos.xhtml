@@ -11,22 +11,43 @@
 
 
 		<h:form>
-			<table class="table table-bordered"
-				style="width: 80%; margin-left: 10%;">
-				<tr>
-					<th>Nº pedido</th>
-					<th>Data de compra</th>
-				</tr>
-
-				<ui:repeat var="pedido" value="#{mBeanCarrinho.pedidosCliente}">
-					<tr style="width: 80%;">
-						<td>#{pedido.id}</td>
-						<td>#{pedido.dataCompra}</td>
+			<f:event listener="#{mBeanCarrinho.buscarPedidosCliente}"
+				type="preRenderView" />
+			<ui:repeat var="pedido" value="#{mBeanCarrinho.pedidosCliente}">
+				<table class="table table-bordered"
+					style="width: 60%; margin-left: 20%; padding: 0;">
+					<tr>
+						<th>Nº pedido</th>
+						<th>Data</th>
 					</tr>
-				</ui:repeat>
 
 
-			</table>
+					<tr style="width: 60%;">
+						<td>#{pedido.id}</td>
+						<td><h:outputText value="#{pedido.dataCompra}">
+								<f:convertDateTime pattern="dd-MM-yyy HH:mm:ss" timeZone="GMT-3"></f:convertDateTime>
+							</h:outputText></td>
+					</tr>
+					</table>
+					<table class="table table-bordered"
+						style="width: 60%; margin-left: 20%; padding: 0;">
+						<tr>
+							<th scope="col">Produto</th>
+							<th scope="col">Quantidade</th>
+							<th scope="col">Preço</th>
+						</tr>
+
+						<ui:repeat var="item" value="#{pedido.itens}">
+							<tr>
+								<td>#{item.produto.nome}</td>
+								<td>#{item.quantidade}</td>
+								<td>R$ #{item.produto.valor}</td>
+							</tr>
+						</ui:repeat>
+					</table>
+					
+
+			</ui:repeat>
 		</h:form>
 	</ui:define>
 

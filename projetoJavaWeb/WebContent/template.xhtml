@@ -27,12 +27,16 @@
 			<div class="navbar-nav">
 				<a class="nav-item nav-link" href="index.jsf">Home </a> 
 				 <a
-					class="nav-item nav-link" href="cadastroCliente.jsf">Cadastro de Cliente</a>
+					class="nav-item nav-link" href="cadastroCliente.jsf">Cadastre-se</a>
 					<a
-					class="nav-item nav-link" href="meusPedidos.jsf">Meus Pedidos</a>
+					class="nav-item nav-link" href="meusPedidos.jsf" onclick="javascript: habilitar();">Meus Pedidos</a>
 				<a
 					class="nav-item nav-link" href="listaProdutos.jsf">Lista de
 					Produtos</a>
+					<form jsf:id="formSair" method="post" style="padding: 0;">
+					<a
+					class="nav-item nav-link" jsf:action="#{mBeanCliente.logout}">Sair</a>
+					</form>
 			</div>
 		</div>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -51,7 +55,8 @@
 
 	<script src="js/jquery.mask.min.js"></script>
 
-	<ui:insert name="script"></ui:insert>
+	<ui:insert name="script">
+	</ui:insert>
 
 
 

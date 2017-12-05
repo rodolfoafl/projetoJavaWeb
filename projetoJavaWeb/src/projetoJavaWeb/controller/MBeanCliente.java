@@ -28,10 +28,10 @@ public class MBeanCliente {
 	private String endereco;
 	private String cep;
 	private String telefone;
-	
+
 	private String email;
 	private String senha;
-	
+
 	public String login() {
 
 		Cliente c = new ClienteDAO().buscar(email, senha);
@@ -53,8 +53,14 @@ public class MBeanCliente {
 
 		// redireciono para tela que ele estava tentando acessar
 		return "" + req.getSession().getAttribute("pagina");
+
 	}
 	
+	public String logout() {
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		req.getSession().setAttribute("cliente", null);
+		return "index.jsf";
+	}
 
 	/* Método para salvar um cliente no banco de dados */
 	public void salvar() {
@@ -98,7 +104,7 @@ public class MBeanCliente {
 	public List<Cliente> getClientes() {
 		return cDAO.consultar();
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -170,7 +176,6 @@ public class MBeanCliente {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
