@@ -12,20 +12,18 @@
 		<form jsf:id="form" method="post">
 
 
-			<div style="width: 50%; margin: 0 auto;">
+			<div style="width: 35%; margin: 1% auto; background-color: gray; text-align: center; height: 180px; border-radius: 15px;">
 				<h:messages styleClass="alert alert-danger">
 				</h:messages>
-
-				<h2 class="form-signin-heading">Login Cliente</h2>
+				<h2 class="form-signin-heading" style="color: white;">Login Cliente</h2>
 				<label for="login" class="sr-only">Login</label> <input type="email"
 					jsf:id="login" jsf:value="#{mBeanCliente.email}"
-					class="form-control" placeholder="cliente@email.com" /> <label for="senha"
+					class="form-control" placeholder="cliente@email.com" style="width: 90%; margin-left: 5%;"/> <label for="senha"
 					class="sr-only">Senha</label> <input type="password" jsf:id="senha"
-					jsf:value="#{mBeanCliente.senha}" class="form-control" placeholder="Senha"/> <input
+					jsf:value="#{mBeanCliente.senha}" class="form-control" placeholder="Senha" style="width: 90%;margin-left: 5%;"/> <input
 					type="submit" jsf:id="logar"
 					jsf:action="#{mBeanCliente.login}"
-					class="btn btn-lg btn-primary btn-block" value="Logar" />
-
+					class="btn btn-lg btn-primary btn-block" value="Logar" style="margin-top: 5px; width: 50%; margin-left: 25%; margin-bottom: 5px;"/>
 			</div>
 
 		</form>
